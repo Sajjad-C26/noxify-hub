@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noxify - Royal Cinematic Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .royal-card {
+            background: linear-gradient(135deg, rgba(25, 25, 32, 0.9) 0%, rgba(12, 12, 16, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+        .royal-nav {
+            background: rgba(10, 10, 13, 0.85);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .hero-banner {
+            background: radial-gradient(circle at top right, rgba(229, 9, 20, 0.15), transparent 50%), 
+                        linear-gradient(135deg, #181822 0%, #0a0a0f 100%);
+            border: 1px solid rgba(229, 9, 20, 0.2);
+            box-shadow: 0 15px 35px rgba(229, 9, 20, 0.1);
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-[#070709] text-white font-sans antialiased min-h-screen flex flex-col pb-28 selection:bg-[#E50914] selection:text-white">
+
+    <!-- NOTIFICATION TOAST POPUP -->
+    <div id="toastNotification" class="fixed top-20 left-1/2 -translate-x-1/2 bg-amber-500 text-black text-xs font-black px-4 py-2.5 rounded-xl shadow-2xl z-50 transition-all duration-300 opacity-0 pointer-events-none flex items-center space-x-2">
+        <span>🔔</span>
+        <span id="toastText">Action completed successfully!</span>
+    </div>
+
+    <!-- LUXURY TOP HEADER WITH SEARCH -->
+    <header class="px-5 py-3 sticky top-0 bg-[#070709]/90 backdrop-blur-xl z-40 border-b border-white/5 shrink-0 space-y-3">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 rounded-full bg-[#E50914] animate-pulse"></div>
+                <h1 class="text-[#E50914] font-black tracking-widest text-lg">NOXIFY</h1>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="text-[9px] font-extrabold tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-full uppercase">VIP ELITE</span>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#E50914] to-purple-900 p-0.5 flex items-center justify-center shadow-lg">
+                    <div id="headerAvatarInitial" class="w-full h-full bg-[#0a0a0f] rounded-full flex items-center justify-center font-bold text-[#E50914] text-xs">S</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instant Search Bar Engine -->
+        <div class="relative">
+            <input type="text" id="searchInput" oninput="filterContent()" placeholder="Search teams, matches, or sports..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 pl-9 text-xs text-white focus:outline-none focus:border-[#E50914] transition">
+            <span class="absolute left-3 top-2.5 text-xs text-gray-400">🔍</span>
+        </div>
+    </header>
+
+    <!-- DYNAMIC CONTENT CONTAINER -->
+    <main id="content-box" class="px-4 pt-4 space-y-4 flex-grow overflow-y-auto">
+        <!-- Royal Hero Stream Card -->
+        <div class="searchable-item relative rounded-2xl overflow-hidden hero-banner p-5 flex flex-col justify-between" data-keywords="real madrid man city football uefa">
+            <div class="flex justify-between items-start mb-8">
+                <span class="bg-[#E50914] text-white text-[10px] font-black px-2.5 py-1 rounded-md tracking-widest uppercase shadow-[0_0_15px_rgba(229,9,20,0.5)]">LIVE 4K HDR</span>
+                <button onclick="toggleFavorite('Real Madrid vs Man City')" class="w-8 h-8 rounded-full bg-black/40 border border-white/10 flex items-center justify-center text-sm hover:border-[#E50914] transition cursor-pointer">❤️</button>
+            </div>
+            <div class="flex items-center justify-between my-2">
+                <div class="flex items-center space-x-2">
+                    <div class="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center font-bold text-xs">RM</div>
+                    <span class="text-xs font-bold">Real Madrid</span>
+                </div>
+                <span class="text-xs text-red-500 font-black px-2">VS</span>
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs font-bold">Man City</span>
+                    <div class="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center font-bold text-xs text-blue-400">MC</div>
+                </div>
+            </div>
+            <div>
+                <p class="text-[11px] text-gray-400 mt-2 flex items-center space-x-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>84.5K Elite Viewers Immersed</span>
+                </p>
+                <button onclick="openPlayer('Real Madrid vs Man City', 'UEFA Champions League')" class="mt-4 w-full bg-gradient-to-r from-[#E50914] to-[#b80710] hover:from-[#ff0a16] hover:to-[#d00812] text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_5px_20px_rgba(229,9,20,0.4)] flex items-center justify-center space-x-2 cursor-pointer">
+                    <span>▶ Launch Cinematic Stream</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Premium Category Grid -->
+        <div>
+            <h3 class="text-[11px] font-bold text-gray-400 tracking-widest uppercase mb-3 px-1">Exclusive Categories</h3>
+            <div class="grid grid-cols-3 gap-3">
+                <div onclick="filterByCategory('football')" class="royal-card p-4 rounded-xl text-center cursor-pointer hover:border-white/20 transition-all group">
+                    <span class="text-2xl group-hover:scale-110 inline-block transition-transform">⚽</span>
+                    <p class="text-xs font-bold mt-2 text-gray-200">Football</p>
+                </div>
+                <div onclick="filterByCategory('basketball')" class="royal-card p-4 rounded-xl text-center cursor-pointer hover:border-white/20 transition-all group">
+                    <span class="text-2xl group-hover:scale-110 inline-block transition-transform">🏀</span>
+                    <p class="text-xs font-bold mt-2 text-gray-200">Basketball</p>
+                </div>
+                <div onclick="filterByCategory('racing')" class="royal-card p-4 rounded-xl text-center cursor-pointer hover:border-white/20 transition-all group">
+                    <span class="text-2xl group-hover:scale-110 inline-block transition-transform">🏎️</span>
+                    <p class="text-xs font-bold mt-2 text-gray-200">F1 Racing</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- STREAM & LIVE CHAT POPUP MODAL -->
+    <div id="videoModal" class="fixed inset-0 bg-black/95 z-50 hidden flex flex-col justify-between p-4 backdrop-blur-2xl">
+        <div class="flex justify-between items-center border-b border-white/10 pb-3 shrink-0">
+            <div>
+                <span id="serverBadge" class="text-[9px] bg-emerald-500 text-black font-black px-2 py-0.5 rounded">SERVER 1 (4K ULTRA)</span>
+                <h3 id="modalTitle" class="text-sm font-bold mt-1 text-white">Stream Hub</h3>
+            </div>
+            <button onclick="closePlayer()" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-xs hover:bg-[#E50914] transition cursor-pointer">✕</button>
+        </div>
+
+        <!-- Server Selector Tabs -->
+        <div class="flex space-x-2 my-2 shrink-0">
+            <button onclick="switchServer(1)" id="srv-1" class="flex-grow bg-[#E50914] text-white text-[10px] font-bold py-1.5 rounded-lg transition cursor-pointer">Server 1 (4K)</button>
+            <button onclick="switchServer(2)" id="srv-2" class="flex-grow bg-white/10 text-gray-300 text-[10px] font-bold py-1.5 rounded-lg transition cursor-pointer">Server 2 (HD)</button>
+            <button onclick="switchServer(3)" id="srv-3" class="flex-grow bg-white/10 text-gray-300 text-[10px] font-bold py-1.5 rounded-lg transition cursor-pointer">Server 3 (Backup)</button>
+        </div>
+
+        <!-- Video Player Frame -->
+        <div class="w-full aspect-video rounded-2xl royal-card flex flex-col items-center justify-center p-4 text-center relative overflow-hidden shrink-0">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(229,9,20,0.15)_0%,_transparent_70%)]"></div>
+            <div class="w-12 h-12 rounded-full bg-[#E50914]/20 border border-[#E50914] flex items-center justify-center text-lg mb-2 text-[#E50914] shadow-[0_0_20px_rgba(229,9,20,0.4)] animate-pulse">▶</div>
+            <p id="streamStatusText" class="text-xs font-bold text-white tracking-wide">Connected to 4K Ultra Server (60 FPS)</p>
+        </div>
+
+        <!-- Live Chat & Reactions Drawer -->
+        <div class="royal-card rounded-2xl p-3 flex flex-col flex-grow mt-2 overflow-hidden">
+            <div class="flex justify-between items-center mb-2 border-b border-white/5 pb-2 shrink-0">
+                <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">⚡ Live Fan Reactions & Chat</span>
+                <div class="flex space-x-1">
+                    <button onclick="sendReaction('🔥')" class="hover:scale-125 transition">🔥</button>
+                    <button onclick="sendReaction('⚽')" class="hover:scale-125 transition">⚽</button>
+                    <button onclick="sendReaction('👏')" class="hover:scale-125 transition">👏</button>
+                    <button onclick="sendReaction('❤️')" class="hover:scale-125 transition">❤️</button>
+                </div>
+            </div>
+            
+            <!-- Chat Messages Scroll Box -->
+            <div id="chatBox" class="flex-grow overflow-y-auto space-y-2 text-xs pr-1 mb-2 max-h-24">
+                <p><span class="text-amber-400 font-bold">Tanvir:</span> What an unbelievable goal! 🚀</p>
+                <p><span class="text-red-400 font-bold">Sakib:</span> Madrid defense is solid tonight.</p>
+                <p><span class="text-blue-400 font-bold">Farhan:</span> Let's go City!! 🔥</p>
+            </div>
+
+            <!-- Send Message Input -->
+            <div class="flex space-x-2 pt-1 border-t border-white/5 shrink-0">
+                <input type="text" id="chatInput" placeholder="Send a message..." class="bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#E50914] flex-grow">
+                <button onclick="postMessage()" class="bg-[#E50914] hover:bg-red-700 text-white font-bold px-4 py-2 rounded-xl text-xs transition cursor-pointer">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROYAL FLOATING BOTTOM NAVIGATION -->
+    <nav class="fixed bottom-0 left-0 right-0 royal-nav py-3 px-4 flex justify-around items-center text-xs text-gray-400 z-40">
+        <button onclick="loadPage('home')" id="n-home" class="text-[#E50914] font-bold flex flex-col items-center space-y-1 transition">
+            <span class="text-base">🏠</span>
+            <span class="text-[8px]">Home</span>
+        </button>
+        <button onclick="loadPage('live')" id="n-live" class="hover:text-white flex flex-col items-center space-y-1 transition">
+            <span class="text-base">⚡</span>
+            <span class="text-[8px]">Live Hub</span>
+        </button>
+        <button onclick="loadPage('schedule')" id="n-schedule" class="hover:text-white flex flex-col items-center space-y-1 transition">
+            <span class="text-base">📅</span>
+            <span class="text-[8px]">Schedule</span>
+        </button>
+        <button onclick="loadPage('favorites')" id="n-favorites" class="hover:text-white flex flex-col items-center space-y-1 transition">
+            <span class="text-base">❤️</span>
+            <span class="text-[8px]">Favorites</span>
+        </button>
+        <button onclick="loadPage('highlights')" id="n-highlights" class="hover:text-white flex flex-col items-center space-y-1 transition">
+            <span class="text-base">🎬</span>
+            <span class="text-[8px]">Replays</span>
+        </button>
+        <button onclick="loadPage('profile')" id="n-profile" class="hover:text-white flex flex-col items-center space-y-1 transition">
+            <span class="text-base">👤</span>
+            <span class="text-[8px]">Profile</span>
+        </button>
+    </nav>
+
+    <!-- JS ENGINE -->
+    <script>
+        var chatInterval;
+        var countdownInterval;
+        
+        var storedFavorites = localStorage.getItem('noxify_favorites');
+        var favoritesList = storedFavorites ? JSON.parse(storedFavorites) : ["Real Madrid vs Man City"];
+
+        var userProfile = {
+            name: localStorage.getItem('noxify_username') || "Sajjad Hossain",
+            bio: localStorage.getItem('noxify_userbio') || "Passionate Football & Sports Fan 🚀"
+        };
+
+        function updateHeaderAvatar() {
+            var initial = userProfile.name.charAt(0).toUpperCase();
+            var el = document.getElementById('headerAvatarInitial');
+            if(el) el.innerText = initial;
+        }
+        updateHeaderAvatar();
+
+        function saveFavoritesToStorage() {
+            localStorage.setItem('noxify_favorites', JSON.stringify(favoritesList));
+        }
+
+        function loadPage(page) {
+            clearInterval(countdownInterval);
+            var tabs = ['home', 'live', 'schedule', 'favorites', 'highlights', 'profile'];
+            for(var i = 0; i < tabs.length; i++) {
+                var t = tabs[i];
+                var btn = document.getElementById('n-' + t);
+                if(t === page) {
+                    btn.className = "text-[#E50914] font-bold flex flex-col items-center space-y-1 transition scale-105";
+                } else {
+                    btn.className = "text-gray-400 hover:text-white flex flex-col items-center space-y-1 transition";
+                }
+            }
+
+            var box = document.getElementById('content-box');
+            
+            if(page === 'home') {
+                box.innerHTML = `
+                    <div class="searchable-item relative rounded-2xl overflow-hidden hero-banner p-5 flex flex-col justify-between" data-keywords="real madrid man city football uefa">
+                        <div class="flex justify-between items-start mb-8">
+                            <span class="bg-[#E50914] text-white text-[10px] font-black px-2.5 py-1 rounded-md tracking-widest uppercase shadow-[0_0_15px_rgba(229,9,20,0.5)]">LIVE 4K HDR</span>
+                            <button onclick="toggleFavorite('Real Madrid vs Man City')" class="w-8 h-8 rounded-full bg-black/40 border border-white/10 flex items-center justify-center text-sm hover:border-[#E50914] transition cursor-pointer">❤️</button>
+                        </div>
+                        <div class="flex items-center justify-between my-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center font-bold text-xs">RM</div>
+                                <span class="text-xs font-bold">Real Madrid</span>
+                            </div>
+                            <span class="text-xs text-red-500 font-black px-2">VS</span>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs font-bold">Man City</span>
+                                <div class="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center font-bold text-xs text-blue-400">MC</div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[11px] text-gray-400 mt-2 flex items-center space-x-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span><span>84.5K Elite Viewers Immersed</span></p>
+                            <button onclick="openPlayer('Real Madrid vs Man City', 'UEFA Champions League')" class="mt-4 w-full bg-gradient-to-r from-[#E50914] to-[#b80710] hover:from-[#ff0a16] hover:to-[#d00812] text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_5px_20px_rgba(229,9,20,0.4)] flex items-center justify-center space-x-2 cursor-pointer"><span>▶ Launch Cinematic Stream</span></button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-[11px] font-bold text-gray-400 tracking-widest uppercase mb-3 px-1">Exclusive Categories</h3>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div onclick="filterByCategory('football')" class="royal-card p-4 rounded-xl text-center cursor-pointer hover:border-white/20 transition-all"><span class="text-2xl">⚽</span><p class="text-xs font-bold mt-2 text-gray-200">Football</p></div>
+                            <div onclick="filterByCategory('basketball')" class="royal-card p-4 rounded-xl text-center cursor-pointer hover:border-white/20 transition-all"><span class="text-2xl">🏀</span><p class="text-xs font-bold mt-2 text-gray-200">Basketball</p></div>
+                            <div onclick="filterByCategory('racing')" class="royal-card p-4 rounded-xl text-center cursor-pointer hover:border-white/20 transition-all"><span class="text-2xl">🏎️</span><p class="text-xs font-bold mt-2 text-gray-200">F1 Racing</p></div>
+                        </div>
+                    </div>
+                `;
+            } else if(page === 'live') {
+                box.innerHTML = `
+                    <h3 class="text-[11px] font-bold text-emerald-400 tracking-widest uppercase mb-3 px-1 flex items-center"><span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-ping"></span> Live Broadcast Matrix</h3>
+                    
+                    <div class="searchable-item royal-card p-4 rounded-2xl space-y-3 mb-3 transition" data-keywords="fc barcelona bayern munich football la liga">
+                        <div class="flex justify-between items-center"><span class="text-emerald-400 text-[10px] font-black uppercase tracking-wider">● ULTRA 4K STREAM</span><button onclick="toggleFavorite('FC Barcelona vs Bayern Munich')" class="text-sm hover:scale-110 transition cursor-pointer">❤️</button></div>
+                        <div class="flex items-center justify-between" onclick="openPlayer('FC Barcelona vs Bayern Munich', 'La Liga')">
+                            <div class="flex items-center space-x-2"><div class="w-8 h-8 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center font-bold text-xs text-red-400">BAR</div><span class="font-bold text-xs text-white">FC Barcelona</span></div>
+                            <span class="text-emerald-400 font-bold text-xs">2 - 1</span>
+                            <div class="flex items-center space-x-2"><span class="font-bold text-xs text-white">Bayern Munich</span><div class="w-8 h-8 rounded-full bg-red-600/20 border border-red-600/30 flex items-center justify-center font-bold text-xs text-red-500">BAY</div></div>
+                        </div>
+                        <div class="flex justify-between text-[10px] text-gray-400 pt-2 border-t border-white/5"><span>Camp Nou</span><span class="text-emerald-400 font-bold">Live (78')</span></div>
+                    </div>
+
+                    <div class="searchable-item royal-card p-4 rounded-2xl space-y-3 transition" data-keywords="la lakers golden state warriors basketball nba">
+                        <div class="flex justify-between items-center"><span class="text-blue-400 text-[10px] font-black uppercase tracking-wider">● HD STREAM</span><button onclick="toggleFavorite('LA Lakers vs Golden State')" class="text-sm hover:scale-110 transition cursor-pointer">❤️</button></div>
+                        <div class="flex items-center justify-between" onclick="openPlayer('LA Lakers vs Golden State', 'NBA Finals')">
+                            <div class="flex items-center space-x-2"><div class="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center font-bold text-xs text-amber-400">LAL</div><span class="font-bold text-xs text-white">LA Lakers</span></div>
+                            <span class="text-blue-400 font-bold text-xs">104 - 98</span>
+                            <div class="flex items-center space-x-2"><span class="font-bold text-xs text-white">Golden State</span><div class="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center font-bold text-xs text-blue-400">GSW</div></div>
+                        </div>
+                        <div class="flex justify-between text-[10px] text-gray-400 pt-2 border-t border-white/5"><span>Crypto.com Arena</span><span class="text-blue-400 font-bold">Fourth Quarter</span></div>
+                    </div>
+                `;
+            } else if(page === 'schedule') {
+                box.innerHTML = `
+                    <h3 class="text-[11px] font-bold text-amber-400 tracking-widest uppercase mb-3 px-1 flex items-center">📅 Upcoming Match Schedule & Time</h3>
+                    
+                    <div class="royal-card p-4 rounded-2xl space-y-3 mb-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-amber-400 text-[10px] font-bold uppercase">Premier League • 01:00 AM</span>
+                            <button onclick="toggleFavorite('Arsenal vs Chelsea')" class="text-sm cursor-pointer">❤️</button>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2"><div class="w-8 h-8 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center font-bold text-xs text-red-400">ARS</div><span class="font-bold text-xs text-white">Arsenal</span></div>
+                            <span class="text-gray-500 font-black text-xs">VS</span>
+                            <div class="flex items-center space-x-2"><span class="font-bold text-xs text-white">Chelsea</span><div class="w-8 h-8 rounded-full bg-blue-600/20 border border-blue-600/30 flex items-center justify-center font-bold text-xs text-blue-400">CHE</div></div>
+                        </div>
+                        <div class="bg-black/40 p-2.5 rounded-xl border border-white/5 flex justify-between items-center text-xs">
+                            <span class="text-gray-400">Starts in:</span>
+                            <span id="countdown-1" class="font-mono font-bold text-amber-400">05h : 22m : 45s</span>
+                        </div>
+                        <button onclick="setReminder('Arsenal vs Chelsea')" class="w-full bg-amber-500/20 border border-amber-500/40 hover:bg-amber-500 hover:text-black text-amber-400 font-bold py-2 rounded-xl text-xs transition cursor-pointer"><span>🔔 Remind Me</span></button>
+                    </div>
+
+                    <div class="royal-card p-4 rounded-2xl space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-400 text-[10px] font-bold uppercase">Serie A • 03:30 AM</span>
+                            <button onclick="toggleFavorite('AC Milan vs Inter Milan')" class="text-sm cursor-pointer">❤️</button>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2"><div class="w-8 h-8 rounded-full bg-red-600/20 border border-red-600/30 flex items-center justify-center font-bold text-xs text-red-400">ACM</div><span class="font-bold text-xs text-white">AC Milan</span></div>
+                            <span class="text-gray-500 font-black text-xs">VS</span>
+                            <div class="flex items-center space-x-2"><span class="font-bold text-xs text-white">Inter Milan</span><div class="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center font-bold text-xs text-blue-400">INT</div></div>
+                        </div>
+                        <div class="bg-black/40 p-2.5 rounded-xl border border-white/5 flex justify-between items-center text-xs">
+                            <span class="text-gray-400">Starts in:</span>
+                            <span id="countdown-2" class="font-mono font-bold text-purple-400">12h : 45m : 10s</span>
+                        </div>
+                        <button onclick="setReminder('AC Milan vs Inter Milan')" class="w-full bg-purple-500/20 border border-purple-500/40 hover:bg-purple-500 hover:text-black text-purple-400 font-bold py-2 rounded-xl text-xs transition cursor-pointer"><span>🔔 Remind Me</span></button>
+                    </div>
+                `;
+                startCountdownTimer();
+            } else if(page === 'favorites') {
+                var htmlContent = `<h3 class="text-[11px] font-bold text-red-500 tracking-widest uppercase mb-3 px-1">❤️ Persistent Saved Favorites (LocalStorage)</h3>`;
+                if(favoritesList.length === 0) {
+                    htmlContent += `<div class="royal-card p-8 rounded-2xl text-center text-gray-400 text-xs">No favorites added yet. Click the heart icon on any match!</div>`;
+                } else {
+                    for(var j = 0; j < favoritesList.length; j++) {
+                        htmlContent += `
+                            <div class="royal-card p-4 rounded-2xl flex justify-between items-center mb-3">
+                                <div>
+                                    <span class="text-[9px] text-[#E50914] font-bold uppercase tracking-wider">Saved Match</span>
+                                    <h4 class="font-bold text-sm text-white mt-0.5">${favoritesList[j]}</h4>
+                                </div>
+                                <button onclick="toggleFavorite('${favoritesList[j]}'); loadPage('favorites');" class="text-xs bg-white/10 hover:bg-red-500 px-3 py-1.5 rounded-xl transition cursor-pointer">Remove</button>
+                            </div>
+                        `;
+                    }
+                }
+                box.innerHTML = htmlContent;
+            } else if(page === 'highlights') {
+                box.innerHTML = `
+                    <h3 class="text-[11px] font-bold text-[#E50914] tracking-widest uppercase mb-3 px-1">🎬 Cinematic Replay Hub</h3>
+                    <div onclick="openPlayer('Top 10 Bicycles Kicks', 'Decade Special')" class="searchable-item royal-card p-4 rounded-2xl space-y-3 cursor-pointer hover:border-red-500/40 transition" data-keywords="top 10 bicycles kicks football highlights">
+                        <div class="w-full h-32 rounded-xl bg-gradient-to-tr from-black via-zinc-900 to-red-950 flex items-center justify-center border border-white/5"><span class="text-2xl text-[#E50914]">▶</span></div>
+                        <h4 class="font-bold text-sm text-white">Top 10 Bicycles Kicks of the Decade</h4>
+                        <p class="text-xs text-gray-400">Duration: 6:45 mins • 60FPS HDR</p>
+                    </div>
+                `;
+            } else if(page === 'profile') {
+                box.innerHTML = `
+                    <div class="royal-card p-6 rounded-2xl space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-[#E50914] to-amber-500 p-0.5 shadow-2xl shrink-0">
+                                <div class="w-full h-full bg-[#0a0a0f] rounded-full flex items-center justify-center text-xl font-bold text-[#E50914]">${userProfile.name.charAt(0).toUpperCase()}</div>
+                            </div>
+                            <div class="overflow-hidden">
+                                <h3 class="font-black text-base text-white truncate">${userProfile.name}</h3>
+                                <p class="text-[11px] text-amber-400 font-bold mt-0.5 tracking-wider uppercase">👑 VIP Elite Member</p>
+                                <p class="text-[11px] text-gray-400 mt-1 italic truncate">"${userProfile.bio}"</p>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-white/5 grid grid-cols-2 gap-3">
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5"><p class="text-[10px] text-gray-400">Saved Favorites</p><p class="font-bold text-sm text-white">${favoritesList.length} Matches</p></div>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5"><p class="text-[10px] text-gray-400">Cloud Sync</p><p class="font-bold text-sm text-emerald-400">Active</p></div>
+                        </div>
+
+                        <!-- Profile Customization Form -->
+                        <div class="pt-3 border-t border-white/5 space-y-3">
+                            <h4 class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Edit Profile Information</h4>
+                            <div>
+                                <label class="text-[10px] text-gray-400 block mb-1">Display Name</label>
+                                <input type="text" id="editNameInput" value="${userProfile.name}" class="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#E50914]">
+                            </div>
+                            <div>
+                                <label class="text-[10px] text-gray-400 block mb-1">Status / Bio Tagline</label>
+                                <input type="text" id="editBioInput" value="${userProfile.bio}" class="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#E50914]">
+                            </div>
+                            <button onclick="saveProfileChanges()" class="w-full bg-gradient-to-r from-[#E50914] to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition cursor-pointer shadow-lg">Save Profile Settings</button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function saveProfileChanges() {
+            var newName = document.getElementById('editNameInput').value.trim();
+            var newBio = document.getElementById('editBioInput').value.trim();
+
+            if(newName !== '') {
+                userProfile.name = newName;
+                localStorage.setItem('noxify_username', newName);
+            }
+            if(newBio !== '') {
+                userProfile.bio = newBio;
+                localStorage.setItem('noxify_userbio', newBio);
+            }
+
+            updateHeaderAvatar();
+            loadPage('profile');
+
+            var toast = document.getElementById('toastNotification');
+            var toastText = document.getElementById('toastText');
+            toastText.innerText = "✨ Profile settings updated successfully!";
+            toast.style.opacity = "1";
+            toast.style.transform = "translate(-50%, 10px)";
+            
+            setTimeout(function() {
+                toast.style.opacity = "0";
+                toast.style.transform = "translate(-50%, 0)";
+            }, 3000);
+        }
+
+        function startCountdownTimer() {
+            var totalSeconds1 = 19365;
+            var totalSeconds2 = 45910;
+
+            countdownInterval = setInterval(function() {
+                totalSeconds1 = totalSeconds1 > 0 ? totalSeconds1 - 1 : 0;
+                totalSeconds2 = totalSeconds2 > 0 ? totalSeconds2 - 1 : 0;
+
+                var h1 = Math.floor(totalSeconds1 / 3600);
+                var m1 = Math.floor((totalSeconds1 % 3600) / 60);
+                var s1 = totalSeconds1 % 60;
+
+                var h2 = Math.floor(totalSeconds2 / 3600);
+                var m2 = Math.floor((totalSeconds2 % 3600) / 60);
+                var s2 = totalSeconds2 % 60;
+
+                var el1 = document.getElementById('countdown-1');
+                var el2 = document.getElementById('countdown-2');
+
+                if(el1) el1.innerText = (h1 < 10 ? '0' + h1 : h1) + 'h : ' + (m1 < 10 ? '0' + m1 : m1) + 'm : ' + (s1 < 10 ? '0' + s1 : s1) + 's';
+                if(el2) el2.innerText = (h2 < 10 ? '0' + h2 : h2) + 'h : ' + (m2 < 10 ? '0' + m2 : m2) + 'm : ' + (s2 < 10 ? '0' + s2 : s2) + 's';
+            }, 1000);
+        }
+
+        function toggleFavorite(matchName) {
+            var index = favoritesList.indexOf(matchName);
+            var toast = document.getElementById('toastNotification');
+            var toastText = document.getElementById('toastText');
+            
+            if(index > -1) {
+                favoritesList.splice(index, 1);
+                toastText.innerText = matchName + " removed from favorites!";
+            } else {
+                favoritesList.push(matchName);
+                toastText.innerText = matchName + " saved to browser storage! ❤️";
+            }
+
+            saveFavoritesToStorage();
+
+            toast.style.opacity = "1";
+            toast.style.transform = "translate(-50%, 10px)";
+            
+            setTimeout(function() {
+                toast.style.opacity = "0";
+                toast.style.transform = "translate(-50%, 0)";
+            }, 3000);
+        }
+
+        function setReminder(matchName) {
+            var toast = document.getElementById('toastNotification');
+            var toastText = document.getElementById('toastText');
+            toastText.innerText = "🔔 Notification alert set for " + matchName + "!";
+            toast.style.opacity = "1";
+            toast.style.transform = "translate(-50%, 10px)";
+            
+            setTimeout(function() {
+                toast.style.opacity = "0";
+                toast.style.transform = "translate(-50%, 0)";
+            }, 3000);
+        }
+
+        function filterContent() {
+            var query = document.getElementById('searchInput').value.toLowerCase();
+            var items = document.querySelectorAll('.searchable-item');
+            for(var i = 0; i < items.length; i++) {
+                var keywords = items[i].getAttribute('data-keywords') || "";
+                var text = items[i].innerText.toLowerCase();
+                if(keywords.includes(query) || text.includes(query)) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+
+        function filterByCategory(cat) {
+            loadPage('live');
+            setTimeout(function() {
+                document.getElementById('searchInput').value = cat;
+                filterContent();
+            }, 100);
+        }
+
+        function openPlayer(title, subtitle) {
+            document.getElementById('modalTitle').innerText = title + ' (' + subtitle + ')';
+            document.getElementById('videoModal').classList.remove('hidden');
+            startAutoChat();
+        }
+
+        function closePlayer() {
+            document.getElementById('videoModal').classList.add('hidden');
+            clearInterval(chatInterval);
+        }
+
+        function switchServer(serverNum) {
+            for(var i = 1; i <= 3; i++) {
+                var btn = document.getElementById('srv-' + i);
+                if(i === serverNum) {
+                    btn.className = "flex-grow bg-[#E50914] text-white text-[10px] font-bold py-1.5 rounded-lg transition cursor-pointer";
+                } else {
+                    btn.className = "flex-grow bg-white/10 text-gray-300 text-[10px] font-bold py-1.5 rounded-lg transition cursor-pointer";
+                }
+            }
+
+            var badge = document.getElementById('serverBadge');
+            var status = document.getElementById('streamStatusText');
+            if(serverNum === 1) {
+                badge.innerText = "SERVER 1 (4K ULTRA)";
+                badge.className = "text-[9px] bg-emerald-500 text-black font-black px-2 py-0.5 rounded";
+                status.innerText = "Connected to 4K Ultra Server (60 FPS)";
+            } else if(serverNum === 2) {
+                badge.innerText = "SERVER 2 (HD STABLE)";
+                badge.className = "text-[9px] bg-blue-500 text-black font-black px-2 py-0.5 rounded";
+                status.innerText = "Connected to HD Stable Stream Feed";
+            } else {
+                badge.innerText = "SERVER 3 (BACKUP)";
+                badge.className = "text-[9px] bg-amber-500 text-black font-black px-2 py-0.5 rounded";
+                status.innerText = "Connected to Backup Low-Latency Node";
+            }
+        }
+
+        function sendReaction(emoji) {
+            var chatBox = document.getElementById('chatBox');
+            chatBox.innerHTML += `<p><span class="text-emerald-400 font-bold">You:</span> Reacted ${emoji}</p>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function postMessage() {
+            var input = document.getElementById('chatInput');
+            if(input.value.trim() !== '') {
+                var chatBox = document.getElementById('chatBox');
+                chatBox.innerHTML += `<p><span class="text-purple-400 font-bold">${userProfile.name} (VIP):</span> ${input.value}</p>`;
+                input.value = '';
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+
+        function startAutoChat() {
+            clearInterval(chatInterval);
+            var randomMsgs = [
+                {name: "Rahim", color: "text-blue-400", text: "Incredible pace in this match! 🔥"},
+                {name: "Nayeem", color: "text-amber-400", text: "Ref made a huge mistake there."},
+                {name: "Ashraf", color: "text-pink-400", text: "Anyone watching from Dhaka? 🇧🇩"},
+                {name: "Zubair", color: "text-emerald-400", text: "That pass was pure class!"}
+            ];
+
+            chatInterval = setInterval(function() {
+                var rand = randomMsgs[Math.floor(Math.random() * randomMsgs.length)];
+                var chatBox = document.getElementById('chatBox');
+                if(chatBox) {
+                    chatBox.innerHTML += `<p><span class="${rand.color} font-bold">${rand.name}:</span> ${rand.text}</p>`;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
