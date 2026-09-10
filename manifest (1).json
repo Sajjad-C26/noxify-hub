@@ -1,0 +1,17 @@
+{
+  "background_color": "#08080a",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Noxify",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Noxify",
+  "start_url": "/",
+  "theme_color": "#000000",
+  "description": "Noxify - Royal Cinematic &amp; Sports Hub",
+  "id": "Noxify",
+  "categories": [
+    "sports"
+  ],
+  "lang": "en"
+}
