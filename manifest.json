@@ -8,10 +8,25 @@
   "short_name": "Noxify",
   "start_url": "/",
   "theme_color": "#000000",
-  "description": "Noxify - Royal Cinematic &amp; Sports Hub",
+  "description": "Noxify - Royal Cinematic & Sports Hub",
   "id": "Noxify",
   "categories": [
-    "sports"
+    "sports",
+    "entertainment"
   ],
-  "lang": "en"
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
