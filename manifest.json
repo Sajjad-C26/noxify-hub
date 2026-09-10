@@ -1,7 +1,7 @@
 {
-  "name": "Noxify - Royal Cinematic &amp; Sports Hub",
+  "name": "Noxify - Royal Cinematic & Sports Hub",
   "short_name": "Noxify",
-  "description": "Noxify - Royal Cinematic &amp; Sports Hub",
+  "description": "Noxify - Royal Cinematic & Sports Hub",
   "start_url": "./index.html",
   "id": "/index.html",
   "display": "standalone",
@@ -10,16 +10,28 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "./icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "./icon-512.png",
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "scope": "/",
