@@ -1,0 +1,11 @@
+{
+  "background_color": "#08080a",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Noxify",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Noxify",
+  "start_url": "/",
+  "theme_color": "#000000"
+}
