@@ -188,10 +188,41 @@
   }
 
   function loadPage(page) {
-    // Jodi keu Live Hub-e click kore, direct TV Garden open hobe
     if (page === 'live') {
         location.assign("https://tvgarden.world/");
         return;
+    }
+
+    clearInterval(countdownInterval);
+    var tabs = ['home', 'live', 'schedule', 'favorites', 'highlights', 'profile'];
+    for(var i = 0; i < tabs.length; i++) {
+        var t = tabs[i];
+        var btn = document.getElementById('n-' + t);
+        if(btn) {
+            if(t === page) {
+                btn.className = "text-[#E50914] font-bold flex flex-col items-center space-y-1 transition";
+            } else {
+                btn.className = "text-gray-400 hover:text-white flex flex-col items-center space-y-1 transition";
+            }
+        }
+    }
+
+    var box = document.getElementById('contentArea');
+    if(box) {
+        if(page === 'home') {
+            box.innerHTML = '<div class="p-4 text-center">Home Page Content</div>';
+        } else if(page === 'schedule') {
+            box.innerHTML = '<div class="p-4 text-center">Schedule Page Content</div>';
+        } else if(page === 'favorites') {
+            box.innerHTML = '<div class="p-4 text-center">Favorites Page Content</div>';
+        } else if(page === 'highlights') {
+            box.innerHTML = '<div class="p-4 text-center">Replays Page Content</div>';
+        } else if(page === 'profile') {
+            box.innerHTML = '<div class="p-4 text-center">Profile Page Content</div>';
+        }
+    }
+}
+
     }
     
     clearInterval(countdownInterval);
