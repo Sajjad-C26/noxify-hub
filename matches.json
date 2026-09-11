@@ -1,0 +1,45 @@
+{
+  "liveMatches": [
+    {
+      "id": 1,
+      "category": "cricket",
+      "title": "IND vs PAK | ICC Champions Trophy",
+      "team1": "IND",
+      "team2": "PAK",
+      "logo1": "🇮🇳",
+      "logo2": "🇵🇰",
+      "score1": "245/4 (42.1)",
+      "score2": "",
+      "status": "Live (42nd Over)",
+      "viewers": "124.5K Elite Viewers",
+      "streamUrl": "https://test-streams.mux.dev/x36hls/x36hls.m3u8"
+    },
+    {
+      "id": 2,
+      "category": "football",
+      "title": "Real Madrid vs Man City | UEFA UCL",
+      "team1": "Real Madrid",
+      "team2": "Man City",
+      "logo1": "👑",
+      "logo2": "⚡",
+      "score1": "2",
+      "score2": "1",
+      "status": "Live (78') - Camp Nou",
+      "viewers": "84.5K Elite Viewers",
+      "streamUrl": "https://test-streams.mux.dev/x36hls/x36hls.m3u8"
+    }
+  ],
+  "scheduleMatches": [
+    {
+      "id": 3,
+      "category": "cricket",
+      "title": "BAN vs AUS | T20 World Series",
+      "time": "08:00 PM",
+      "date": "Tonight",
+      "team1": "BAN",
+      "team2": "AUS",
+      "logo1": "🇧🇩",
+      "logo2": "🇦🇺"
+    }
+  ]
+}
