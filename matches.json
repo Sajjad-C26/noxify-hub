@@ -3,43 +3,29 @@
     {
       "id": 1,
       "category": "cricket",
-      "title": "IND vs PAK | ICC Champions Trophy",
-      "team1": "IND",
-      "team2": "PAK",
-      "logo1": "🇮🇳",
-      "logo2": "🇵🇰",
-      "score1": "245/4 (42.1)",
-      "score2": "",
-      "status": "Live (42nd Over)",
-      "viewers": "124.5K Elite Viewers",
+      "title": "T Sports HD Live Stream",
+      "team1": "T Sports",
+      "team2": "Live Broadcast",
+      "logo1": "🏏",
+      "logo2": "📺",
+      "score1": "HD",
+      "score2": "Live",
+      "status": "Broadcasting Live",
+      "viewers": "142.8K Elite Viewers",
       "streamUrl": "https://tvsen5.aynaott.com/TnMn5kZz8aLm/index.m3u8"
-    },
-    {
-      "id": 2,
-      "category": "football",
-      "title": "Real Madrid vs Man City | UEFA UCL",
-      "team1": "Real Madrid",
-      "team2": "Man City",
-      "logo1": "👑",
-      "logo2": "⚡",
-      "score1": "2",
-      "score2": "1",
-      "status": "Live (78') - Camp Nou",
-      "viewers": "84.5K Elite Viewers",
-      "streamUrl": "https://test-streams.mux.dev/x36hls/x36hls.m3u8"
     }
   ],
   "scheduleMatches": [
     {
-      "id": 3,
+      "id": 2,
       "category": "cricket",
-      "title": "BAN vs AUS | T20 World Cup",
-      "time": "08:00 PM",
-      "date": "Tonight",
-      "team1": "BAN",
-      "team2": "AUS",
-      "logo1": "🇧🇩",
-      "logo2": "🇦🇺"
+      "title": "Upcoming Live Matches & Series",
+      "time": "Check Back Soon",
+      "date": "Ongoing",
+      "team1": "BCCI / BCB",
+      "team2": "Global Events",
+      "logo1": "🏆",
+      "logo2": "🏏"
     }
   ]
 }
