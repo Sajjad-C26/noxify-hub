@@ -520,10 +520,14 @@
       }
     }, 4000);
   }
-  // Stream Launch Function
-function launchStream() {
-    alert('Connecting to 4K Cinematic Stream...');
-    // Ekhane apnar stream link ba player active korar code thakbe
+  function launchStream() {
+    // TV Garden ba apnar preferred live stream URL
+    const streamUrl = "https://tvgarden.world/"; 
+    
+    // App-er vitorer current window ba notun tab-e link open korar jonno
+    window.location.href = streamUrl; 
+}
+
 }
 
 </script>
