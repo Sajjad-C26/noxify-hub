@@ -520,12 +520,11 @@
       }
     }, 4000);
   }
-  function launchStream() {
-    // TV Garden ba apnar preferred live stream URL
-    const streamUrl = "https://tvgarden.world/"; 
-    
-    // App-er vitorer current window ba notun tab-e link open korar jonno
-    window.location.href = streamUrl; 
+   function launchStream() {
+    // Web view ar app view duitaiatei kaj korar jonno sobsheye safe poddhoti
+    location.assign("https://tvgarden.world/");
+}
+
 }
 
 }
