@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noxify - Elite Sports Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- HLS.js for direct .m3u8 streaming support -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: #f3f4f6; }
+        .glow-red { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
+        .glow-border { border: 1px solid rgba(239, 68, 68, 0.2); }
+        .custom-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="pb-24 max-w-md mx-auto relative min-h-screen selection:bg-red-600 selection:text-white">
+
+    <!-- TOP HEADER -->
+    <header class="flex items-center justify-between px-4 py-3 sticky top-0 bg-[#050505]/90 backdrop-blur-md z-50 border-b border-white/5">
+        <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
+            <h1 class="text-xl font-extrabold tracking-wider text-red-600 uppercase">NOXIFY</h1>
+        </div>
+        <div class="flex items-center space-x-3">
+            <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-gradient-to-r from-amber-500/20 to-yellow-500/20 text-amber-400 border border-amber-500/30">VIP ELITE</span>
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-red-600 to-purple-600 flex items-center justify-center font-bold text-sm text-white shadow-md">S</div>
+        </div>
+    </header>
+
+    <!-- SEARCH BAR -->
+    <div class="px-4 py-3">
+        <div class="relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-zinc-500 text-sm"></i>
+            <input type="text" id="searchInput" placeholder="Search teams, matches, or sports..." class="w-full bg-[#121214] text-sm text-white pl-10 pr-4 py-3 rounded-xl glow-border focus:outline-none focus:border-red-600 transition">
+        </div>
+    </div>
+
+    <!-- CONTENT CONTAINER -->
+    <main id="mainContent" class="px-4 space-y-4">
+        <!-- Injected dynamically -->
+    </main>
+
+    <!-- CINEMATIC STREAMING MODAL WITH HLS PLAYER -->
+    <div id="streamModal" class="fixed inset-0 z-50 bg-black/95 flex flex-col hidden">
+        <div class="flex items-center justify-between p-4 border-b border-zinc-800">
+            <h3 id="modalTitle" class="font-bold text-red-500 text-sm truncate">Live HD Stream</h3>
+            <button onclick="closeStream()" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-white"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="flex-1 relative flex items-center justify-center bg-black">
+            <!-- Native HTML5 Video Player with HLS Integration -->
+            <video id="videoPlayer" class="w-full h-full object-contain" controls autoplay></video>
+        </div>
+    </div>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[#0a0a0c]/95 backdrop-blur-lg border-t border-white/10 px-2 py-2 flex justify-around items-center z-40">
+        <button onclick="switchTab('home')" class="nav-btn flex flex-col items-center space-y-1 text-red-500" data-tab="home">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-semibold">Home</span>
+        </button>
+        <button onclick="switchTab('live')" class="nav-btn flex flex-col items-center space-y-1 text-zinc-500" data-tab="live">
+            <i class="fa-solid fa-bolt text-lg"></i>
+            <span class="text-[10px] font-semibold">Live Hub</span>
+        </button>
+        <button onclick="switchTab('schedule')" class="nav-btn flex flex-col items-center space-y-1 text-zinc-500" data-tab="schedule">
+            <i class="fa-solid fa-calendar-days text-lg"></i>
+            <span class="text-[10px] font-semibold">Schedule</span>
+        </button>
+        <button onclick="switchTab('favorites')" class="nav-btn flex flex-col items-center space-y-1 text-zinc-500" data-tab="favorites">
+            <i class="fa-solid fa-heart text-lg"></i>
+            <span class="text-[10px] font-semibold">Favorites</span>
+        </button>
+        <button onclick="switchTab('replays')" class="nav-btn flex flex-col items-center space-y-1 text-zinc-500" data-tab="replays">
+            <i class="fa-solid fa-film text-lg"></i>
+            <span class="text-[10px] font-semibold">Replays</span>
+        </button>
+        <button onclick="switchTab('profile')" class="nav-btn flex flex-col items-center space-y-1 text-zinc-500" data-tab="profile">
+            <i class="fa-solid fa-user text-lg"></i>
+            <span class="text-[10px] font-semibold">Profile</span>
+        </button>
+    </nav>
+
+    <script>
+        // Data Store with working public sample HLS stream test links (replace with your live sports .m3u8 links)
+        const sportsData = {
+            categories: [
+                { id: 'all', name: 'All', icon: 'fa-fire' },
+                { id: 'cricket', name: 'Cricket', icon: 'fa-baseball-bat-ball' },
+                { id: 'football', name: 'Football', icon: 'fa-futbol' },
+                { id: 'basketball', name: 'Basketball', icon: 'fa-basketball' },
+                { id: 'motorsports', name: 'MotoGP/F1', icon: 'fa-flag-checkered' }
+            ],
+            liveMatches: [
+                { 
+                    id: 1, 
+                    category: 'cricket', 
+                    title: 'IND vs PAK | ICC Champions Trophy', 
+                    team1: 'IND', team2: 'PAK', logo1: '🇮🇳', logo2: '🇵🇰', 
+                    score1: '245/4 (42.1)', score2: '', 
+                    status: 'Live (42nd Over)', 
+                    viewers: '124.5K Elite Viewers', 
+                    // Example sample test stream link (replace with real sports channel m3u8 link)
+                    streamUrl: 'https://test-streams.mux.dev/x36hls/x36hls.m3u8' 
+                },
+                { 
+                    id: 2, 
+                    category: 'football', 
+                    title: 'Real Madrid vs Man City | UEFA UCL', 
+                    team1: 'Real Madrid', team2: 'Man City', logo1: '👑', logo2: '⚡', 
+                    score1: '2', score2: '1', 
+                    status: 'Live (78\') - Camp Nou', 
+                    viewers: '84.5K Elite Viewers', 
+                    streamUrl: 'https://test-streams.mux.dev/x36hls/x36hls.m3u8' 
+                },
+                { 
+                    id: 3, 
+                    category: 'basketball', 
+                    title: 'LA Lakers vs Golden State | NBA', 
+                    team1: 'LA Lakers', team2: 'Golden State', logo1: '🟡', logo2: '🔵', 
+                    score1: '104', score2: '98', 
+                    status: 'Fourth Quarter', 
+                    viewers: '42.1K Elite Viewers', 
+                    streamUrl: 'https://test-streams.mux.dev/x36hls/x36hls.m3u8' 
+                }
+            ],
+            scheduleMatches: [
+                { id: 4, category: 'cricket', title: 'BAN vs AUS | T20 World Series', time: '08:00 PM', date: 'Tonight', team1: 'BAN', team2: 'AUS', logo1: '🇧🇩', logo2: '🇦🇺' },
+                { id: 5, category: 'football', title: 'Arsenal vs Chelsea | Premier League', time: '01:00 AM', date: 'Tomorrow', team1: 'ARS', team2: 'CHE', logo1: '🔴', logo2: '🔵' }
+            ],
+            replays: [
+                { title: 'Top 10 Bicycles Kicks of the Decade', duration: '6:45 mins • 60FPS HDR', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+            ]
+        };
+
+        let currentTab = 'home';
+        let selectedCategory = 'all';
+        let favorites = JSON.parse(localStorage.getItem('noxify_favs')) || [1];
+        let hlsPlayer = null;
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if(btn.dataset.tab === tab) {
+                    btn.classList.remove('text-zinc-500');
+                    btn.classList.add('text-red-500');
+                } else {
+                    btn.classList.remove('text-red-500');
+                    btn.classList.add('text-zinc-500');
+                }
+            });
+            renderContent();
+        }
+
+        function filterCategory(catId) {
+            selectedCategory = catId;
+            renderContent();
+        }
+
+        function renderContent() {
+            const container = document.getElementById('mainContent');
+            container.innerHTML = '';
+
+            if (currentTab === 'home' || currentTab === 'live') {
+                // Featured Match Banner
+                container.innerHTML += `
+                    <div class="bg-[#121214] rounded-2xl p-4 glow-border glow-red relative overflow-hidden">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-[10px] font-bold px-2.5 py-1 rounded bg-red-600 text-white uppercase tracking-wider animate-pulse">LIVE 4K HDR</span>
+                            <button onclick="toggleFav(2)" class="text-zinc-400 hover:text-red-500"><i class="fa-solid fa-heart ${favorites.includes(2) ? 'text-red-500' : ''}"></i></button>
+                        </div>
+                        <div class="flex justify-between items-center my-4">
+                            <div class="text-center flex-1">
+                                <span class="text-2xl">${sportsData.liveMatches[1].logo1}</span>
+                                <p class="font-bold text-sm mt-1">Real Madrid</p>
+                            </div>
+                            <div class="text-red-500 font-extrabold text-sm px-2">VS</div>
+                            <div class="text-center flex-1">
+                                <span class="text-2xl">${sportsData.liveMatches[1].logo2}</span>
+                                <p class="font-bold text-sm mt-1">Man City</p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-zinc-400 text-center mb-3"><i class="fa-solid fa-circle text-[8px] text-emerald-500 mr-1"></i> ${sportsData.liveMatches[1].viewers}</p>
+                        <button onclick="openStream('${sportsData.liveMatches[1].streamUrl}', 'Real Madrid vs Man City')" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center space-x-2 shadow-lg shadow-red-600/30 transition">
+                            <i class="fa-solid fa-play"></i>
+                            <span>LAUNCH CINEMATIC STREAM</span>
+                        </button>
+                    </div>
+                `;
+
+                // Categories Filter Bar
+                let catHtml = `<div class="flex space-x-2 overflow-x-auto custom-scrollbar py-2">`;
+                sportsData.categories.forEach(cat => {
+                    let activeClass = selectedCategory === cat.id ? 'bg-red-600 text-white' : 'bg-[#121214] text-zinc-400 border border-white/5';
+                    catHtml += `<button onclick="filterCategory('${cat.id}')" class="px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap flex items-center space-x-2 ${activeClass} transition">
+                        <i class="fa-solid ${cat.icon}"></i>
+                        <span>${cat.name}</span>
+                    </button>`;
+                });
+                catHtml += `</div>`;
+                container.innerHTML += catHtml;
+
+                // Match List Header
+                container.innerHTML += `<h2 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mt-4">Live Broadcast Matrix</h2>`;
+
+                let matchesToDisplay = sportsData.liveMatches.filter(m => selectedCategory === 'all' || m.category === selectedCategory);
+                matchesToDisplay.forEach(match => {
+                    container.innerHTML += `
+                        <div class="bg-[#121214] rounded-xl p-4 glow-border flex flex-col space-y-3">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="text-emerald-400 font-bold"><i class="fa-solid fa-circle text-[6px] mr-1"></i> ${match.status}</span>
+                                <button onclick="toggleFav(${match.id})" class="text-zinc-400 hover:text-red-500"><i class="fa-solid fa-heart ${favorites.includes(match.id) ? 'text-red-500' : ''}"></i></button>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-lg">${match.logo1}</span>
+                                    <span class="font-bold text-sm">${match.team1}</span>
+                                </div>
+                                <span class="text-xs font-bold text-zinc-500">${match.score1 || 'VS'} ${match.score2 ? '- ' + match.score2 : ''}</span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="font-bold text-sm">${match.team2}</span>
+                                    <span class="text-lg">${match.logo2}</span>
+                                </div>
+                            </div>
+                            <button onclick="openStream('${match.streamUrl}', '${match.title}')" class="w-full bg-zinc-900 hover:bg-red-600/20 text-red-500 font-semibold py-2.5 rounded-lg text-xs border border-red-600/30 transition flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-play text-[10px]"></i>
+                                <span>Watch HD Stream</span>
+                            </button>
+                        </div>
+                    `;
+                });
+            } 
+            else if (currentTab === 'schedule') {
+                container.innerHTML += `<h2 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Upcoming Match Schedule</h2>`;
+                sportsData.scheduleMatches.forEach(match => {
+                    container.innerHTML += `
+                        <div class="bg-[#121214] rounded-xl p-4 glow-border space-y-3">
+                            <div class="flex justify-between items-center text-xs text-amber-400 font-semibold">
+                                <span>${match.title.split('|')[0]} • ${match.time}</span>
+                                <span class="text-[10px] bg-amber-500/10 px-2 py-0.5 rounded">${match.date}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-lg">${match.logo1}</span>
+                                    <span class="font-bold text-sm">${match.team1}</span>
+                                </div>
+                                <span class="text-xs font-bold text-zinc-500">VS</span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="font-bold text-sm">${match.team2}</span>
+                                    <span class="text-lg">${match.logo2}</span>
+                                </div>
+                            </div>
+                            <button onclick="alert('Reminder set successfully!')" class="w-full bg-zinc-900 text-amber-400 hover:bg-amber-500/10 font-semibold py-2 rounded-lg text-xs border border-amber-500/30 transition">
+                                <i class="fa-solid fa-bell mr-1"></i> Remind Me
+                            </button>
+                        </div>
+                    `;
+                });
+            }
+            else if (currentTab === 'favorites') {
+                container.innerHTML += `<h2 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Persistent Saved Favorites</h2>`;
+                let favMatches = sportsData.liveMatches.filter(m => favorites.includes(m.id));
+                favMatches.forEach(match => {
+                    container.innerHTML += `
+                        <div class="bg-[#121214] rounded-xl p-4 glow-border flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-sm">${match.title}</p>
+                                <span class="text-[10px] text-emerald-400">${match.status}</span>
+                            </div>
+                            <button onclick="toggleFav(${match.id})" class="bg-zinc-900 text-red-500 px-3 py-1.5 rounded-lg text-xs border border-red-500/30">Remove</button>
+                        </div>
+                    `;
+                });
+            }
+            else if (currentTab === 'replays') {
+                container.innerHTML += `<h2 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Cinematic Replay Hub</h2>`;
+                sportsData.replays.forEach(replay => {
+                    container.innerHTML += `
+                        <div class="bg-[#121214] rounded-xl overflow-hidden glow-border p-4">
+                            <h4 class="font-bold text-sm mb-2">${replay.title}</h4>
+                            <p class="text-[11px] text-zinc-500">${replay.duration}</p>
+                        </div>
+                    `;
+                });
+            }
+            else if (currentTab === 'profile') {
+                container.innerHTML += `
+                    <div class="bg-[#121214] rounded-2xl p-5 glow-border text-center space-y-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-red-600 to-purple-600 mx-auto flex items-center justify-center font-bold text-xl text-white shadow-xl">S</div>
+                        <div>
+                            <h3 class="font-bold text-base">Sajjad Hossain</h3>
+                            <p class="text-xs text-amber-400 font-semibold mt-0.5"><i class="fa-solid fa-crown mr-1"></i> VIP ELITE MEMBER</p>
+                            <p class="text-[11px] text-zinc-500 italic mt-1">"Passionate Football & Sports Fan 🚀"</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function toggleFav(id) {
+            if(favorites.includes(id)) {
+                favorites = favorites.filter(f => f !== id);
+            } else {
+                favorites.push(id);
+            }
+            localStorage.setItem('noxify_favs', JSON.stringify(favorites));
+            renderContent();
+        }
+
+        // Open HLS Stream in Native Video Player
+        function openStream(url, title) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('streamModal').classList.remove('hidden');
+            
+            const video = document.getElementById('videoPlayer');
+            
+            if (Hls.isSupported()) {
+                if (hlsPlayer) {
+                    hlsPlayer.destroy();
+                }
+                hlsPlayer = new Hls();
+                hlsPlayer.loadSource(url);
+                hlsPlayer.attachMedia(video);
+                hlsPlayer.on(Hls.Events.MANIFEST_PARSED, () => {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                // For Safari / iOS native HLS support
+                video.src = url;
+                video.addEventListener('loadedmetadata', () => {
+                    video.play();
+                });
+            }
+        }
+
+        function closeStream() {
+            const video = document.getElementById('videoPlayer');
+            video.pause();
+            video.src = '';
+            if (hlsPlayer) {
+                hlsPlayer.destroy();
+                hlsPlayer = null;
+            }
+            document.getElementById('streamModal').classList.add('hidden');
+        }
+
+        renderContent();
+    </script>
+</body>
+</html>
