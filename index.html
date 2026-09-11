@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noxify - Live Sports Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0f0f0f] text-white min-h-screen pb-20">
+
+    <!-- TOP HEADER -->
+    <header class="p-4 flex justify-between items-center border-b border-gray-800">
+        <h1 class="text-xl font-bold text-[#E50914] tracking-wider">● NOXIFY</h1>
+        <div id="userAvatar" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center font-bold">S</div>
+    </header>
+
+    <!-- SEARCH BAR -->
+    <div class="p-4">
+        <div class="relative">
+            <input type="text" placeholder="Search teams, matches, or sports..." class="w-full bg-[#1a1a1a] text-sm text-white px-4 py-3 pl-10 rounded-xl border border-gray-800 focus:outline-none focus:border-[#E50914]">
+            <span class="absolute left-3 top-3.5 text-gray-400">🔍</span>
+        </div>
+    </div>
+
+    <!-- MAIN DYNAMIC CONTENT AREA -->
+    <main id="contentArea" class="p-4">
+        <!-- Default Home View -->
+        <div class="space-y-4">
+            <div class="bg-gradient-to-r from-red-900 to-black p-4 rounded-2xl border border-red-800">
+                <span class="bg-[#E50914] text-xs px-2 py-1 rounded font-bold">LIVE 4K HDR</span>
+                <div class="flex justify-between items-center my-4">
+                    <div class="text-center"><span class="font-bold">Real Madrid</span></div>
+                    <div class="text-red-500 font-extrabold text-xl">VS</div>
+                    <div class="text-center"><span class="font-bold">Man City</span></div>
+                </div>
+                <p class="text-xs text-gray-400 text-center mb-4">84.5K Elite Viewers Immersed</p>
+                <a href="https://tvgarden.world/" target="_blank" class="block w-full bg-[#E50914] text-center py-3 rounded-xl font-bold tracking-wide shadow-lg shadow-red-900/50">
+                    ▶ LAUNCH CINEMATIC STREAM
+                </a>
+            </div>
+
+            <h2 class="text-lg font-bold mt-6 mb-3">EXCLUSIVE CATEGORIES</h2>
+            <div class="grid grid-cols-3 gap-3">
+                <div onclick="loadPage('home')" class="bg-[#1a1a1a] p-4 rounded-xl text-center border border-gray-800 cursor-pointer hover:border-red-600 transition">
+                    <div class="text-2xl mb-1">⚽</div>
+                    <span class="text-xs text-gray-300">Football</span>
+                </div>
+                <div onclick="loadPage('home')" class="bg-[#1a1a1a] p-4 rounded-xl text-center border border-gray-800 cursor-pointer hover:border-red-600 transition">
+                    <div class="text-2xl mb-1">🏀</div>
+                    <span class="text-xs text-gray-300">Basketball</span>
+                </div>
+                <div onclick="loadPage('home')" class="bg-[#1a1a1a] p-4 rounded-xl text-center border border-gray-800 cursor-pointer hover:border-red-600 transition">
+                    <div class="text-2xl mb-1">🏎️</div>
+                    <span class="text-xs text-gray-300">F1 Racing</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ROYAL FLOATING BOTTOM NAVIGATION -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#121212] border-t border-gray-800 flex justify-around py-3 z-50">
+        <button onclick="loadPage('home')" id="n-home" class="text-[#E50914] font-bold flex flex-col items-center space-y-1 transition">
+            <span class="text-base">🏠</span>
+            <span class="text-[8px]">Home</span>
+        </button>
+        <a href="https://tvgarden.world/" target="_blank" id="n-live" class="text-gray-400 hover:text-white flex flex-col items-center space-y-1 transition">
+            <span class="text-base">⚡</span>
+            <span class="text-[8px]">Live Hub</span>
+        </a>
+        <button onclick="loadPage('schedule')" id="n-schedule" class="text-gray-400 hover:text-white flex flex-col items-center space-y-1 transition">
+            <span class="text-base">📅</span>
+            <span class="text-[8px]">Schedule</span>
+        </button>
+        <button onclick="loadPage('favorites')" id="n-favorites" class="text-gray-400 hover:text-white flex flex-col items-center space-y-1 transition">
+            <span class="text-base">❤️</span>
+            <span class="text-[8px]">Favorites</span>
+        </button>
+        <button onclick="loadPage('highlights')" id="n-highlights" class="text-gray-400 hover:text-white flex flex-col items-center space-y-1 transition">
+            <span class="text-base">🎬</span>
+            <span class="text-[8px]">Replays</span>
+        </button>
+        <button onclick="loadPage('profile')" id="n-profile" class="text-gray-400 hover:text-white flex flex-col items-center space-y-1 transition">
+            <span class="text-base">👤</span>
+            <span class="text-[8px]">Profile</span>
+        </button>
+    </nav>
+
+    <!-- JS ENGINE -->
+    <script>
+        var countdownInterval = null;
+
+        function loadPage(page) {
+            clearInterval(countdownInterval);
+            var tabs = ['home', 'live', 'schedule', 'favorites', 'highlights', 'profile'];
+            for(var i = 0; i < tabs.length; i++) {
+                var t = tabs[i];
+                var btn = document.getElementById('n-' + t);
+                if(btn && t !== 'live') {
+                    if(t === page) {
+                        btn.className = "text-[#E50914] font-bold flex flex-col items-center space-y-1 transition";
+                    } else {
+                        btn.className = "text-gray-400 hover:text-white flex flex-col items-center space-y-1 transition";
+                    }
+                }
+            }
+
+            var box = document.getElementById('contentArea');
+            if(box) {
+                if(page === 'home') {
+                    box.innerHTML = '<div class="space-y-4"><div class="bg-gradient-to-r from-red-900 to-black p-4 rounded-2xl border border-red-800"><span class="bg-[#E50914] text-xs px-2 py-1 rounded font-bold">LIVE 4K HDR</span><div class="flex justify-between items-center my-4"><div class="text-center"><span class="font-bold">Real Madrid</span></div><div class="text-red-500 font-extrabold text-xl">VS</div><div class="text-center"><span class="font-bold">Man City</span></div></div><p class="text-xs text-gray-400 text-center mb-4">84.5K Elite Viewers Immersed</p><a href="https://tvgarden.world/" target="_blank" class="block w-full bg-[#E50914] text-center py-3 rounded-xl font-bold tracking-wide shadow-lg shadow-red-900/50">▶ LAUNCH CINEMATIC STREAM</a></div></div>';
+                } else if(page === 'schedule') {
+                    box.innerHTML = '<div class="p-4 text-center text-white">Match Schedule Content</div>';
+                } else if(page === 'favorites') {
+                    box.innerHTML = '<div class="p-4 text-center text-white">Favorite Matches Content</div>';
+                } else if(page === 'highlights') {
+                    box.innerHTML = '<div class="p-4 text-center text-white">Replays & Highlights Content</div>';
+                } else if(page === 'profile') {
+                    box.innerHTML = '<div class="p-4 text-center text-white">User Profile Content</div>';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
