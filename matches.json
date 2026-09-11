@@ -12,9 +12,8 @@
       "score2": "",
       "status": "Live (42nd Over)",
       "viewers": "124.5K Elite Viewers",
-      "streamUrl": "https://tvsen5.aynaott.com/TnMn5kZz8aLm/index.m3u8",
-
-
+      "streamUrl": "https://tvsen5.aynaott.com/TnMn5kZz8aLm/index.m3u8"
+    },
     {
       "id": 2,
       "category": "football",
@@ -34,7 +33,7 @@
     {
       "id": 3,
       "category": "cricket",
-      "title": "BAN vs AUS | T20 World Series",
+      "title": "BAN vs AUS | T20 World Cup",
       "time": "08:00 PM",
       "date": "Tonight",
       "team1": "BAN",
