@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Inject CSS automatically so index.html remains untouched
+    // Inject CSS automatically
     if (!document.getElementById('toffee-dynamic-styles')) {
         let styleLink = document.createElement('link');
         styleLink.id = 'toffee-dynamic-styles';
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let containerHtml = `
                 <div class="toffee-channels-container">
                     <div class="toffee-channels-title">🔥 Live TV Channels</div>
-                    <div class="toffee-slider">
+                    <div class="toffee-grid">
             `;
 
             channels.forEach(channel => {
@@ -37,12 +37,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
 
-            // Insert into page safely
-            let targetElement = document.querySelector('.liveMatches') || document.querySelector('main') || document.body;
+            // Target the featured banner area to replace it cleanly
+            let targetBanner = document.querySelector('.liveMatches');
             let injectionDiv = document.createElement('div');
             injectionDiv.id = 'toffee-hub-section';
             injectionDiv.innerHTML = containerHtml;
-            targetElement.prepend(injectionDiv);
+
+            if (targetBanner) {
+                targetBanner.replaceWith(injectionDiv);
+            } else {
+                // Fallback: prepend to main or body if banner class changes
+                let fallbackTarget = document.querySelector('main') || document.body;
+                fallbackTarget.prepend(injectionDiv);
+            }
         })
         .catch(err => console.error("Error loading Toffee channels:", err));
 });
