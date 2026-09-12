@@ -1,12 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Inject CSS automatically so index.html remains untouched
+    if (!document.getElementById('toffee-dynamic-styles')) {
+        let styleLink = document.createElement('link');
+        styleLink.id = 'toffee-dynamic-styles';
+        styleLink.rel = 'stylesheet';
+        styleLink.href = 'channels-style.css';
+        document.head.appendChild(styleLink);
+    }
+
+    // Fetch channels from matches.json
     fetch('matches.json')
         .then(response => response.json())
         .then(data => {
-            // Check if liveChannels exists
             let channels = data.liveChannels || [];
             if (channels.length === 0) return;
 
-            // Create container HTML
             let containerHtml = `
                 <div class="toffee-channels-container">
                     <div class="toffee-channels-title">🔥 Live TV Channels</div>
@@ -29,9 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
 
-            // Insert into page safely without touching index.html structure
+            // Insert into page safely
             let targetElement = document.querySelector('.liveMatches') || document.querySelector('main') || document.body;
             let injectionDiv = document.createElement('div');
+            injectionDiv.id = 'toffee-hub-section';
             injectionDiv.innerHTML = containerHtml;
             targetElement.prepend(injectionDiv);
         })
