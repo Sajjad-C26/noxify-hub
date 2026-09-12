@@ -31,7 +31,7 @@
       "logo": "https://i.imgur.com/dVRMHM4.png"
     },
     {
-    "name": "Star Sports 2",
+      "name": "Star Sports 2",
       "streamUrl": "https://example.com/stream7.m3u8",
       "logo": "https://i.imgur.com/dVRMHM4.png"
     },
@@ -55,7 +55,7 @@
     {
       "id": 1,
       "category": "cricket",
-      "title": "T Sports HD - Live Broadcast",
+      "name": "T Sports HD - Live",
       "team1": "Bangladesh",
       "logo1": "https://i.imgur.com/dVRMHM4.png",
       "team2": "Australia",
@@ -69,7 +69,7 @@
     {
       "id": 2,
       "category": "football",
-      "title": "Premier League",
+      "name": "Premier League",
       "team1": "Manchester United",
       "logo1": "https://i.imgur.com/dVRMHM4.png",
       "team2": "Chelsea",
@@ -77,5 +77,14 @@
       "time": "Tonight, 9:00 PM"
     }
   ],
-  "replays": []
+  "replays": [
+    {
+      "title": "Top 10 Bicycles Kicks of the Decade",
+      "duration": "6:45 mins"
+    },
+    {
+      "title": "Champions League Epic Comebacks 2025/26",
+      "duration": "12:30 mins"
+    }
+  ]
 }
