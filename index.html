@@ -114,23 +114,28 @@
         let hlsPlayer = null;
 
         // Fetch Data from Remote JSON Automatically
-        async function fetchSportsData() {
-            try {
-                let response = await fetch(remoteJsonUrl);
-                let data = await response.json();
-                sportsData.liveMatches = data.liveMatches || [];
-                sportsData.scheduleMatches = data.scheduleMatches || [];
-                renderContent();
-            } catch (error) {
-                console.error("Error fetching live data:", error);
-                document.getElementById('mainContent').innerHTML = `
-                    <div class="text-center py-20 text-red-500 text-xs">
-                        <i class="fa-solid fa-triangle-exclamation text-xl mb-2"></i>
-                        <p>Failed to sync live data. Please check connection.</p>
-                    </div>
-                `;
-            }
-        }
+async function fetchSportsData() {
+    try {
+        let response = await fetch(remoteJsonUrl);
+        let data = await response.json();
+        
+        sportsData.liveChannels = data.liveChannels || [];
+        sportsData.liveMatches = data.liveMatches || [];
+        sportsData.scheduleMatches = data.scheduleMatches || [];
+        sportsData.replays = data.replays || [];
+        
+        renderContent();
+    } catch (error) {
+        console.error("Error fetching live data:", error);
+        document.getElementById('mainContent').innerHTML = `
+            <div class="text-center py-20 text-red-500 text-xs">
+                <i class="fa-solid fa-triangle-exclamation text-xl mb-2"></i>
+                <p>Failed to sync live data. Please check connection.</p>
+            </div>
+        `;
+    }
+}
+
 
         function switchTab(tab) {
             currentTab = tab;
