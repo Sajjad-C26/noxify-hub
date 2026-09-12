@@ -171,16 +171,16 @@ async function fetchSportsData() {
                             <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;">
                     `;
                     channels.forEach(ch => {
-                        channelsHtml += `
-                            <div onclick="openStream('${ch.streamUrl}', '${ch.name}')" style="display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 6px 2px; cursor: pointer;">
-                                <div style="width: 40px; height: 40px; border-radius: 50%; background: #151515; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 4px; border: 1px solid rgba(255,255,255,0.15);">
-                                    <img src="${ch.logo}" style="width: 75%; height: 75%; object-fit: contain;" onerror="this.src='https://i.imgur.com/dVRMHM4.png'">
-                                </div>
-                                <span style="color: #cccccc; font-size: 9px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">${ch.name}</span>
-                            </div>
-                        `;
-                    });
-                    channelsHtml += `</div></div>`;
+  channelsHtml += `
+    <div onclick="openStream('${ch.streamUrl}', '${ch.name}')" style="display: flex; flex-direction: column; align-items: center; cursor: pointer; min-width: 65px;">
+      <div style="width: 40px; height: 40px; border-radius: 50%; background: #151515; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; margin-bottom: 6px;">
+        <img src="${ch.logo}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://i.imgur.com/dVRMHM4.png'">
+      </div>
+      <span style="color: #cccccc; font-size: 9px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 65px;">${ch.name}</span>
+    </div>
+  `;
+});
+
                     container.innerHTML += channelsHtml;
 
                 }
