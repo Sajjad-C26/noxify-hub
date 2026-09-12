@@ -1,20 +1,16 @@
-
-  {
+{
   "liveChannels": [
-  { "name": "Sony Ten 1", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
-  { "name": "Sony Ten 2", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
-  { "name": "Sony Ten 3", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
-  { "name": "Sony Ten 4", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
-  { "name": "Sony Ten 5", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
-  { "name": "Star Sports 1", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
-  { "name": "Star Sports 2", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
-  { "name": "T Sports", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
-  { "name": "Eurosport", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
-  { "name": "GTV", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" }
-]
-
-
-
+    { "name": "Sony Ten 1", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
+    { "name": "Sony Ten 2", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
+    { "name": "Sony Ten 3", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
+    { "name": "Sony Ten 4", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
+    { "name": "Sony Ten 5", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
+    { "name": "Star Sports 1", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
+    { "name": "Star Sports 2", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
+    { "name": "T Sports", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
+    { "name": "Eurosport", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
+    { "name": "GTV", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" }
+  ],
   "liveMatches": [
     {
       "id": 1,
@@ -22,34 +18,12 @@
       "status": "LIVE",
       "title": "T Sports HD - Live Broadcast",
       "team1": "Bangladesh",
-      "logo1": "🏏",
-      "team2": "Australia",
-      "logo2": "🦘",
+      "logo1": "https://upload.wikimedia.org/wikipedia/en/f/f3/Bangladesh_Cricket_Board_Logo.svg",
       "score1": "180/4",
+      "team2": "Australia",
+      "logo2": "https://upload.wikimedia.org/wikipedia/en/e/ed/Cricket_Australia_Logo_2024.svg",
       "score2": "145/8",
-      "streamUrl": "https://example.com/tsports.m3u8"
-    }
-  ],
-  "scheduleMatches": [
-    {
-      "id": 2,
-      "category": "football",
-      "title": "Premier League Match",
-      "team1": "Manchester United",
-      "logo1": "🔴",
-      "team2": "Chelsea",
-      "logo2": "🔵",
-      "time": "Tonight, 9:00 PM"
-    }
-  ],
-  "replays": [
-    {
-      "title": "Top 10 Bicycles Kicks of the Decade",
-      "duration": "6:45 mins"
-    },
-    {
-      "title": "Champions League Epic Comebacks 2025/26",
-      "duration": "12:30 mins"
+      "streamUrl": "#"
     }
   ]
 }
