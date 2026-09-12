@@ -55,11 +55,9 @@
     {
       "id": 1,
       "category": "cricket",
-      "name": "T Sports HD - Live",
+      "title": "T Sports HD - Live Broadcast",
       "team1": "Bangladesh",
-      "logo1": "https://i.imgur.com/dVRMHM4.png",
       "team2": "Australia",
-      "logo2": "https://i.imgur.com/dVRMHM4.png",
       "score1": "180/4",
       "score2": "145/8",
       "streamUrl": "https://example.com/tsports.m3u8"
@@ -69,11 +67,9 @@
     {
       "id": 2,
       "category": "football",
-      "name": "Premier League",
+      "title": "Premier League Match",
       "team1": "Manchester United",
-      "logo1": "https://i.imgur.com/dVRMHM4.png",
       "team2": "Chelsea",
-      "logo2": "https://i.imgur.com/dVRMHM4.png",
       "time": "Tonight, 9:00 PM"
     }
   ],
