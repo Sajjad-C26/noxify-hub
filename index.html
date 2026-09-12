@@ -157,31 +157,26 @@
 
             if (currentTab === 'home' || currentTab === 'live') {
                 if (sportsData.liveMatches.length > 0) {
-                    const feat = sportsData.liveMatches[0];
-                    container.innerHTML += `
-                        <div class="bg-[#121214] rounded-2xl p-4 glow-border glow-red relative overflow-hidden">
-                            <div class="flex justify-between items-center mb-3">
-                                <span class="text-[10px] font-bold px-2.5 py-1 rounded bg-red-600 text-white uppercase tracking-wider animate-pulse">LIVE 4K HDR</span>
-                                <button onclick="toggleFav(${feat.id})" class="text-zinc-400 hover:text-red-500 transition"><i class="fa-solid fa-heart ${favorites.includes(feat.id) ? 'text-red-500' : ''}"></i></button>
-                            </div>
-                            <div class="flex justify-between items-center my-4">
-                                <div class="text-center flex-1">
-                                    <span class="text-2xl">${feat.logo1}</span>
-                                    <p class="font-bold text-sm mt-1 truncate">${feat.team1}</p>
-                                </div>
-                                <div class="text-red-500 font-extrabold text-sm px-2">VS</div>
-                                <div class="text-center flex-1">
-                                    <span class="text-2xl">${feat.logo2}</span>
-                                    <p class="font-bold text-sm mt-1 truncate">${feat.team2}</p>
-                                </div>
-                            </div>
-                            <p class="text-[11px] text-zinc-400 text-center mb-3"><i class="fa-solid fa-circle text-[8px] text-emerald-500 mr-1"></i> ${feat.viewers || 'Live Stream Active'}</p>
-                            <button onclick="openStream('${feat.streamUrl}', '${feat.title}')" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center space-x-2 shadow-lg shadow-red-600/30 transition">
-                                <i class="fa-solid fa-play"></i>
-                                <span>LAUNCH CINEMATIC STREAM</span>
-                            </button>
-                        </div>
+                                        // Live TV Channels Hub Integration
+                    let channels = sportsData.liveChannels || [];
+                    let channelsHtml = `
+                        <div class="toffee-channels-container" style="width: 100%; margin: 0 0 16px 0;">
+                            <div style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">🔥 Live TV Channels</div>
+                            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;">
                     `;
+                    channels.forEach(ch => {
+                        channelsHtml += `
+                            <div onclick="openStream('${ch.streamUrl}', '${ch.name}')" style="display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 6px 2px; cursor: pointer;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: #151515; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 4px; border: 1px solid rgba(255,255,255,0.15);">
+                                    <img src="${ch.logo}" style="width: 75%; height: 75%; object-fit: contain;" onerror="this.src='https://i.imgur.com/dVRMHM4.png'">
+                                </div>
+                                <span style="color: #cccccc; font-size: 9px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">${ch.name}</span>
+                            </div>
+                        `;
+                    });
+                    channelsHtml += `</div></div>`;
+                    container.innerHTML += channelsHtml;
+
                 }
 
                 let catHtml = `<div class="flex space-x-2 overflow-x-auto custom-scrollbar py-2">`;
