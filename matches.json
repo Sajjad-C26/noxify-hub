@@ -11,6 +11,13 @@
     { "name": "Eurosport", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" },
     { "name": "GTV", "logo": "https://i.imgur.com/dVRMHM4.png", "streamUrl": "#" }
   ],
+  "categories": [
+    { "id": "all", "name": "All", "icon": "fa-fire" },
+    { "id": "cricket", "name": "Cricket", "icon": "fa-baseball-bat-ball" },
+    { "id": "football", "name": "Football", "icon": "fa-futbol" },
+    { "id": "basketball", "name": "Basketball", "icon": "fa-basketball" },
+    { "id": "f1", "name": "F1", "icon": "fa-flag-checkered" }
+  ],
   "liveMatches": [
     {
       "id": 1,
@@ -18,10 +25,10 @@
       "status": "LIVE",
       "title": "T Sports HD - Live Broadcast",
       "team1": "Bangladesh",
-      "logo1": "https://upload.wikimedia.org/wikipedia/en/f/f3/Bangladesh_Cricket_Board_Logo.svg",
+      "logo1": "https://i.imgur.com/dVRMHM4.png",
       "score1": "180/4",
       "team2": "Australia",
-      "logo2": "https://upload.wikimedia.org/wikipedia/en/e/ed/Cricket_Australia_Logo_2024.svg",
+      "logo2": "https://i.imgur.com/dVRMHM4.png",
       "score2": "145/8",
       "streamUrl": "#"
     }
