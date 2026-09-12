@@ -55,6 +55,8 @@
     {
       "id": 1,
       "category": "cricket",
+      "status": "LIVE",
+
       "title": "T Sports HD - Live Broadcast",
       "team1": "Bangladesh",
       "logo1": "🏏",
