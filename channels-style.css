@@ -1,0 +1,80 @@
+/* Toffee Style Channels Hub Styling */
+.toffee-channels-container {
+    width: 100%;
+    margin: 15px 0;
+    padding: 0 15px;
+}
+
+.toffee-channels-title {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toffee-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+    scrollbar-width: none; /* Hide scrollbar for clean UI */
+}
+
+.toffee-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.toffee-card {
+    min-width: 85px;
+    max-width: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.toffee-card:hover {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: #ef4444;
+    transform: translateY(-3px);
+}
+
+.toffee-logo-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.toffee-logo-wrapper img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.toffee-name {
+    color: #ffffff;
+    font-size: 11px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    font-weight: 500;
+}
