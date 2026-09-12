@@ -1,4 +1,5 @@
-  "channels": [
+{
+  "liveChannels": [
     {
       "id": 1,
       "name": "Sony Ten 1",
@@ -59,15 +60,12 @@
       "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/GTV_Bangladesh_Logo.svg/512px-GTV_Bangladesh_Logo.svg.png",
       "streamUrl": "https://example.com/gtv.m3u8"
     }
-  ]
-
   ],
   "liveMatches": [
     {
       "id": 1,
       "category": "cricket",
       "status": "LIVE",
-
       "title": "T Sports HD - Live Broadcast",
       "team1": "Bangladesh",
       "logo1": "🏏",
