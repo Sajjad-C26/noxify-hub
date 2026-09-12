@@ -1,55 +1,66 @@
-{
-  "liveChannels": [
+  "channels": [
     {
+      "id": 1,
       "name": "Sony Ten 1",
-      "streamUrl": "https://example.com/stream1.m3u8",
-      "logo": "https://i.imgur.com/dVRMHM4.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Sony_Ten_1_logo.svg/512px-Sony_Ten_1_logo.svg.png",
+      "streamUrl": "https://example.com/sony1.m3u8"
     },
     {
+      "id": 2,
       "name": "Sony Ten 2",
-      "streamUrl": "https://example.com/stream2.m3u8",
-      "logo": "https://i.imgur.com/dVRMHM4.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Sony_Ten_2_logo.svg/512px-Sony_Ten_2_logo.svg.png",
+      "streamUrl": "https://example.com/sony2.m3u8"
     },
     {
+      "id": 3,
       "name": "Sony Ten 3",
-      "streamUrl": "https://example.com/stream3.m3u8",
-      "logo": "https://i.imgur.com/dVRMHM4.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Sony_Ten_3_logo.svg/512px-Sony_Ten_3_logo.svg.png",
+      "streamUrl": "https://example.com/sony3.m3u8"
     },
     {
+      "id": 4,
       "name": "Sony Ten 4",
-      "streamUrl": "https://example.com/stream4.m3u8",
-      "logo": "https://i.imgur.com/dVRMHM4.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Sony_Ten_4_logo.svg/512px-Sony_Ten_4_logo.svg.png",
+      "streamUrl": "https://example.com/sony4.m3u8"
     },
     {
+      "id": 5,
       "name": "Sony Ten 5",
-      "streamUrl": "https://example.com/stream5.m3u8",
-      "logo": "https://i.imgur.com/dVRMHM4.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Sony_Ten_5_logo.svg/512px-Sony_Ten_5_logo.svg.png",
+      "streamUrl": "https://example.com/sony5.m3u8"
     },
     {
+      "id": 6,
       "name": "Star Sports 1",
-      "streamUrl": "https://example.com/stream6.m3u8",
-      "logo": "https://i.imgur.com/dVRMHM4.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Star_Sports_1_Logo.svg/512px-Star_Sports_1_Logo.svg.png",
+      "streamUrl": "https://example.com/star1.m3u8"
     },
     {
+      "id": 7,
       "name": "Star Sports 2",
-      "streamUrl": "https://example.com/stream7.m3u8",
-      "logo": "https://i.imgur.com/dVRMHM4.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Star_Sports_2_Logo.svg/512px-Star_Sports_2_Logo.svg.png",
+      "streamUrl": "https://example.com/star2.m3u8"
     },
     {
+      "id": 8,
       "name": "T Sports",
-      "streamUrl": "https://example.com/stream8.m3u8",
-      "logo": "https://i.imgur.com/dVRMHM4.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/T-Sports-Logo.png/250px-T-Sports-Logo.png",
+      "streamUrl": "https://example.com/tsports.m3u8"
     },
     {
+      "id": 9,
       "name": "Eurosport",
-      "streamUrl": "https://example.com/stream9.m3u8",
-      "logo": "https://i.imgur.com/dVRMHM4.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Eurosport_logo_2015_%28dark_background%29.svg/512px-Eurosport_logo_2015_%28dark_background%29.svg.png",
+      "streamUrl": "https://example.com/eurosport.m3u8"
     },
     {
+      "id": 10,
       "name": "GTV",
-      "streamUrl": "https://example.com/stream10.m3u8",
-      "logo": "https://i.imgur.com/dVRMHM4.png"
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/GTV_Bangladesh_Logo.svg/512px-GTV_Bangladesh_Logo.svg.png",
+      "streamUrl": "https://example.com/gtv.m3u8"
     }
+  ]
+
   ],
   "liveMatches": [
     {
