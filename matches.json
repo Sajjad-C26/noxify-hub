@@ -1,16 +1,17 @@
 {
   "liveChannels": [
-    { "id": 1, "name": "Sony Ten 1", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Sony_Ten_1_logo.svg/512px-Sony_Ten_1_logo.svg.png", "streamUrl": "https://example.com/sony1.m3u8" },
-    { "id": 2, "name": "Sony Ten 2", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Sony_Ten_2_logo.svg/512px-Sony_Ten_2_logo.svg.png", "streamUrl": "https://example.com/sony2.m3u8" },
-    { "id": 3, "name": "Sony Ten 3", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Sony_Ten_3_logo.svg/512px-Sony_Ten_3_logo.svg.png", "streamUrl": "https://example.com/sony3.m3u8" },
-    { "id": 4, "name": "Sony Ten 4", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Sony_Ten_4_logo.svg/512px-Sony_Ten_4_logo.svg.png", "streamUrl": "https://example.com/sony4.m3u8" },
-    { "id": 5, "name": "Sony Ten 5", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Sony_Ten_5_logo.svg/512px-Sony_Ten_5_logo.svg.png", "streamUrl": "https://example.com/sony5.m3u8" },
-    { "id": 6, "name": "Star Sports 1", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Star_Sports_1_Logo.svg/512px-Star_Sports_1_Logo.svg.png", "streamUrl": "https://example.com/star1.m3u8" },
-    { "id": 7, "name": "Star Sports 2", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Star_Sports_2_Logo.svg/512px-Star_Sports_2_Logo.svg.png", "streamUrl": "https://example.com/star2.m3u8" },
-    { "id": 8, "name": "T Sports", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/T-Sports-Logo.png/250px-T-Sports-Logo.png", "streamUrl": "https://example.com/tsports.m3u8" },
-    { "id": 9, "name": "Eurosport", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Eurosport_logo_2015_%28dark_background%29.svg/512px-Eurosport_logo_2015_%28dark_background%29.svg.png", "streamUrl": "https://example.com/eurosport.m3u8" },
-    { "id": 10, "name": "GTV", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/GTV_Bangladesh_Logo.svg/512px-GTV_Bangladesh_Logo.svg.png", "streamUrl": "https://example.com/gtv.m3u8" }
-  ],
+  { "name": "Sony Ten 1", "logo": "https://upload.wikimedia.org/wikipedia/en/8/85/Sony_Ten_1_logo.svg", "streamUrl": "#" },
+  { "name": "Sony Ten 2", "logo": "https://upload.wikimedia.org/wikipedia/en/6/67/Sony_Ten_2_logo.svg", "streamUrl": "#" },
+  { "name": "Sony Ten 3", "logo": "https://upload.wikimedia.org/wikipedia/en/7/7b/Sony_Ten_3_logo.svg", "streamUrl": "#" },
+  { "name": "Sony Ten 4", "logo": "https://upload.wikimedia.org/wikipedia/en/2/29/Sony_Ten_4_logo.svg", "streamUrl": "#" },
+  { "name": "Sony Ten 5", logo: "https://upload.wikimedia.org/wikipedia/en/d/d4/Sony_Ten_5_logo.svg", "streamUrl": "#" },
+  { "name": "Star Sports 1", "logo": "https://upload.wikimedia.org/wikipedia/en/4/4e/Star_Sports_1_Logo.svg", "streamUrl": "#" },
+  { "name": "Star Sports 2", "logo": "https://upload.wikimedia.org/wikipedia/en/b/b3/Star_Sports_2_Logo.svg", "streamUrl": "#" },
+  { "name": "T Sports", "logo": "https://upload.wikimedia.org/wikipedia/en/3/3f/T-Sports-Logo.png", "streamUrl": "#" },
+  { "name": "Eurosport", "logo": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Eurosport_logo_2015_%28dark_background%29.svg", "streamUrl": "#" },
+  { "name": "GTV", "logo": "https://upload.wikimedia.org/wikipedia/en/0/0c/GTV_Bangladesh_Logo.svg", "streamUrl": "#" }
+]
+
   "liveMatches": [
     {
       "id": 1,
