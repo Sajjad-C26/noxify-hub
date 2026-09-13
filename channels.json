@@ -12,3 +12,75 @@
     { "name": "GTV", "logo": "https://upload.wikimedia.org/wikipedia/en/0/0c/GTV_Bangladesh_Logo.svg", "streamUrl": "#" }
   ]
 }
+[
+  {
+    "id": "sony-ten-1",
+    "name": "Sony Ten 1",
+    "logo": "sony-ten-1.png",
+    "category": "sports",
+    "stream_url": ""
+  },
+  {
+    "id": "sony-ten-2",
+    "name": "Sony Ten 2",
+    "logo": "sony-ten-2.png",
+    "category": "sports",
+    "stream_url": ""
+  },
+  {
+    "id": "sony-ten-3",
+    "name": "Sony Ten 3",
+    "logo": "sony-ten-3.png",
+    "category": "sports",
+    "stream_url": ""
+  },
+  {
+    "id": "sony-ten-4",
+    "name": "Sony Ten 4",
+    "logo": "sony-ten-4.png",
+    "category": "sports",
+    "stream_url": ""
+  },
+  {
+    "id": "sony-ten-5",
+    "name": "Sony Ten 5",
+    "logo": "sony-ten-5.png",
+    "category": "sports",
+    "stream_url": ""
+  },
+  {
+    "id": "star-sports-1",
+    "name": "Star Sports 1",
+    "logo": "star-sports-1.png",
+    "category": "sports",
+    "stream_url": ""
+  },
+  {
+    "id": "star-sports-2",
+    "name": "Star Sports 2",
+    "logo": "star-sports-2.png",
+    "category": "sports",
+    "stream_url": ""
+  },
+  {
+    "id": "star-sports-3",
+    "name": "Star Sports 3",
+    "logo": "star-sports-3.png",
+    "category": "sports",
+    "stream_url": ""
+  },
+  {
+    "id": "t-sports",
+    "name": "T Sports",
+    "logo": "t-sports.png",
+    "category": "sports",
+    "stream_url": ""
+  },
+  {
+    "id": "eurosport",
+    "name": "Eurosport",
+    "logo": "eurosport.png",
+    "category": "sports",
+    "stream_url": ""
+  }
+]
