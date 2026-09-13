@@ -157,83 +157,72 @@ async function fetchSportsData() {
             renderContent();
         }
 
-        function renderContent() {
-            const container = document.getElementById('mainContent');
-            container.innerHTML = '';
+       function renderContent() {
+    const container = document.getElementById('mainContent');
+    container.innerHTML = '';
 
-            if (currentTab === 'home' || currentTab === 'live') {
-  let html = '';
+    if (currentTab === 'home' || currentTab === 'live') {
+        let html = '';
 
-        function renderContent() {
-            const container = document.getElementById('mainContent');
-            container.innerHTML = '';
+        // 1. Premium Live TV Channels
+        html += `<div style="width: 100%; margin: 12px 0;">`;
+        html += `<div style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 10px; padding: 0 4px;">🔥 Live TV Channels</div>`;
+        html += `<div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 4px 8px 4px; scrollbar-width: none; -webkit-overflow-scrolling: touch;">`;
 
-            if (currentTab === 'home' || currentTab === 'live') {
-                let html = '';
+        sportsData.liveChannels.forEach(ch => {
+            html += `
+                <div onclick="openStream('${ch.streamUrl}', '${ch.name}')" 
+                     style="display: flex; flex-direction: column; align-items: center; cursor: pointer; gap: 8px; transition: transform 0.2s;"
+                     onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(145deg, #1f1f1f, #121212); display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid rgba(239, 68, 68, 0.4); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2), inset 0 2px 4px rgba(255,255,255,0.05); padding: 4px;">
+                        <img src="${ch.logo}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/2/29/Sony_Ten_4_Tamil.png'" alt="${ch.name}" />
+                    </div>
+                    <span style="color: #e2e8f0; font-size: 11px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 70px; font-weight: 600; letter-spacing: 0.3px;">${ch.name}</span>
+                </div>
+            `;
+        });
+        html += `</div></div>`;
 
-                // 1. Premium Live TV Channels
-                html += `<div style="width: 100%; margin: 12px 0;">`;
-                html += `<div style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 10px; padding: 0 4px;">🔥 Live TV Channels</div>`;
-                html += `<div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 4px 8px 4px; scrollbar-width: none; -webkit-overflow-scrolling: touch;">`;
+        // 2. Categories Section
+        html += `<div class="flex space-x-2 overflow-x-auto custom-scrollbar py-2">`;
+        sportsData.categories.forEach(cat => {
+            let activeClass = selectedCategory === cat.id ? 'bg-red-600 text-white font-bold' : 'bg-[#121214] text-zinc-400 border border-white/5';
+            html += `<button onclick="filterCategory('${cat.id}')" class="px-4 py-2 rounded-xl text-xs whitespace-nowrap flex items-center space-x-2 transition ${activeClass}"><i class="fa-solid ${cat.icon}"></i><span>${cat.name}</span></button>`;
+        });
+        html += `</div>`;
 
-                sportsData.liveChannels.forEach(ch => {
-                    html += `
-                        <div onclick="openStream('${ch.streamUrl}', '${ch.name}')" 
-                             style="display: flex; flex-direction: column; align-items: center; cursor: pointer; gap: 8px; transition: transform 0.2s;"
-                             onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(145deg, #1f1f1f, #121212); display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid rgba(239, 68, 68, 0.4); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2), inset 0 2px 4px rgba(255,255,255,0.05); padding: 4px;">
-                                <img src="${ch.logo}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/2/29/Sony_Ten_4_Tamil.png'" alt="${ch.name}" />
-                            </div>
-                            <span style="color: #e2e8f0; font-size: 11px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 70px; font-weight: 600; letter-spacing: 0.3px;">${ch.name}</span>
+        // 3. Live Matches
+        html += `<h2 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mt-4 mb-2">Live Broadcast Matrix</h2>`;
+        let matchesToDisplay = sportsData.liveMatches.filter(m => selectedCategory === 'all' || m.category === selectedCategory);
+        if (matchesToDisplay.length === 0) {
+            html += `<p class="text-xs text-zinc-500 text-center py-6">No live matches in this category.</p>`;
+        } else {
+            matchesToDisplay.forEach(match => {
+                let isFav = favorites.includes(match.id);
+                html += `
+                    <div class="bg-[#121214] rounded-2xl p-4 glow-border flex flex-col space-y-3 mt-3">
+                        <div class="flex justify-between items-center text-xs font-bold text-emerald-400">
+                            <span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block mr-1 animate-pulse"></span>${match.status}</span>
+                            <button onclick="toggleFav('${match.id}')" class="text-zinc-400 hover:text-red-500 transition"><i class="fa-${isFav ? 'solid' : 'regular'} fa-heart text-base"></i></button>
                         </div>
-                    `;
-                });
-                html += `</div></div>`;
-channels.forEach(ch => {
-
-    html += `
-        <div onclick="openStream('${ch.streamUrl}', '${ch.name}')" 
-             style="display: flex; flex-direction: column; align-items: center; cursor: pointer; gap: 8px; transition: transform 0.2s ease;"
-             onmouseover="this.style.transform='scale(1.05)'" 
-             onmouseout="this.style.transform='scale(1)'">
-            
-            <!-- Premium Image Container -->
-            <div style="
-                width: 60px; 
-                height: 60px; 
-                border-radius: 50%; 
-                background: linear-gradient(145deg, #1f1f1f, #121212); 
-                display: flex; 
-                align-items: center; 
-                justify-content: center; 
-                overflow: hidden;
-                border: 2px solid rgba(239, 68, 68, 0.4); 
-                box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2), inset 0 2px 4px rgba(255,255,255,0.05);
-                padding: 4px;
-            ">
-                <img src="${ch.logo}" 
-                     style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" 
-                     onerror="this.src='https://upload.wikimedia.org/wikipedia/en/2/29/Sony_Ten_4_logo.svg'" 
-                     alt="${ch.name} logo" />
-            </div>
-
-            <!-- Premium Text -->
-            <span style="
-                color: #e2e8f0; 
-                font-size: 11px; 
-                text-align: center; 
-                white-space: nowrap; 
-                overflow: hidden; 
-                text-overflow: ellipsis; 
-                width: 70px;
-                font-weight: 600;
-                letter-spacing: 0.3px;
-            ">${ch.name}</span>
-        </div>
-    `;
-});
-  });
-  html += `</div></div>`;
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-2"><span class="text-lg">${match.logo1}</span><span class="font-bold text-sm">${match.team1}</span></div>
+                            <span class="text-xs font-bold text-zinc-500">${match.score1 || 'VS'}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-2"><span class="text-lg">${match.logo2}</span><span class="font-bold text-sm">${match.team2}</span></div>
+                            <span class="text-xs font-bold text-zinc-500">${match.score2 || ''}</span>
+                        </div>
+                        <button onclick="openStream('${match.streamUrl}', '${match.team1} vs ${match.team2}')" class="w-full bg-red-600/10 hover:bg-red-600/20 text-red-500 border border-red-600/30 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition">
+                            <i class="fa-solid fa-play text-[10px]"></i><span>Watch HD Stream</span>
+                        </button>
+                    </div>
+                `;
+            });
+        }
+        container.innerHTML = html;
+    }
+} 
 
   // 2. Categories
   html += `<div class="flex space-x-2 overflow-x-auto custom-scrollbar py-2 my-2 px-4">`;
