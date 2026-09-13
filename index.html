@@ -164,19 +164,19 @@ async function fetchSportsData() {
             if (currentTab === 'home' || currentTab === 'live') {
   let html = '';
 
-  // 1. Live TV Channels with Unique Original Logos
-  let channels = [
-    { name: "Sony Ten 1", logo: "https://upload.wikimedia.org/wikipedia/en/8/85/Sony_Ten_1_logo.svg", streamUrl: "#" },
-    { name: "Sony Ten 2", logo: "https://upload.wikimedia.org/wikipedia/en/6/67/Sony_Ten_2_logo.svg", streamUrl: "#" },
-    { name: "Sony Ten 3", logo: "https://upload.wikimedia.org/wikipedia/en/7/7b/Sony_Ten_3_logo.svg", streamUrl: "#" },
-    { name: "Sony Ten 4", logo: "https://upload.wikimedia.org/wikipedia/en/2/29/Sony_Ten_4_logo.svg", streamUrl: "#" },
-    { name: "Sony Ten 5", logo: "https://upload.wikimedia.org/wikipedia/en/d/d4/Sony_Ten_5_logo.svg", streamUrl: "#" },
-    { name: "Star Sports 1", logo: "https://upload.wikimedia.org/wikipedia/en/4/4e/Star_Sports_1_Logo.svg", streamUrl: "#" },
-    { name: "Star Sports 2", logo: "https://upload.wikimedia.org/wikipedia/en/b/b3/Star_Sports_2_Logo.svg", streamUrl: "#" },
-    { name: "T Sports", logo: "https://upload.wikimedia.org/wikipedia/en/3/3f/T-Sports-Logo.png", streamUrl: "#" },
-    { name: "Eurosport", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Eurosport_logo_2015_%28dark_background%29.svg", streamUrl: "#" },
-    { name: "GTV", logo: "https://upload.wikimedia.org/wikipedia/en/0/0c/GTV_Bangladesh_Logo.svg", streamUrl: "#" }
-  ];
+// 1. Live TV Channels with Uploaded Local Logos
+let channels = [
+{ name: "Sony Ten 1", logo: "SONY_SportsTen1_SD_Logo_CLR.png", streamUrl: "#" },
+{ name: "Sony Ten 2", logo: "SONY_SportsTen2_SD_Logo_CLR.png", streamUrl: "#" },
+{ name: "Sony Ten 3", logo: "Sony_Sports_Ten_3_Hindi.png", streamUrl: "#" },
+{ name: "Sony Ten 4", logo: "Sony_Sports_Ten_4_Tamil.png", streamUrl: "#" },
+{ name: "Sony Ten 5", logo: "SONY_SportsTen5_SD_Logo_CLR.png", streamUrl: "#" },
+{ name: "Star Sports 1", logo: "pngwing.com.png", streamUrl: "#" },
+{ name: "Star Sports 2", logo: "pngwing.com (1).png", streamUrl: "#" },
+{ name: "Star Sports 3", logo: "pngwing.com (2).png", streamUrl: "#" },
+{ name: "T Sports", logo: "T_Sports_logo.svg.png", streamUrl: "#" },
+{ name: "Eurosport", logo: "Eurosport-logo-768x480.png", streamUrl: "#" }
+];
 
   html += `<div style="width: 100%; margin: 12px 0;">`;
   html += `<div style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 10px; padding: 0 16px;">🔥 Live TV Channels</div>`;
