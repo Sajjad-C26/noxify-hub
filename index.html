@@ -175,16 +175,15 @@ let channels = [
 { name: "Star Sports 2", logo: "pngwing.com (1).png", streamUrl: "#" },
 { name: "Star Sports 3", logo: "pngwing.com (2).png", streamUrl: "#" },
 { name: "T Sports", logo: "T_Sports_logo.svg.png", streamUrl: "#" },
-{ name: "Eurosport", logo: "Eurosport-logo-768x480.png", streamUrl: "#" }
+    { name: "Eurosport", logo: "Eurosport-logo-768x480.png", streamUrl: "#" }
 ];
 
-  html += `<div style="width: 100%; margin: 12px 0;">`;
-  html += `<div style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 10px; padding: 0 16px;">🔥 Live TV Channels</div>`;
-  html += `<div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 16px 8px 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch;">`;
-  
-  // Ei code-ta tomar current channels.forEach(...) block-er jaygay boshabe (Line 185 er kachakachi jekhane html += ... lekha ache)
+html += `<div style="width: 100%; margin: 12px 0;">`;
+html += `<div style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 10px; padding: 0 16px;">🔥 Live TV Channels</div>`;
+html += `<div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 16px 8px 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch;">`;
 
 channels.forEach(ch => {
+
     html += `
         <div onclick="openStream('${ch.streamUrl}', '${ch.name}')" 
              style="display: flex; flex-direction: column; align-items: center; cursor: pointer; gap: 8px; transition: transform 0.2s ease;"
