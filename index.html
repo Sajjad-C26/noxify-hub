@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noxify - Elite Sports Hub</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: #f3f4f6; }
+.glow-red { box-shadow: 0 0 25px rgba(239, 68, 68, 0.25); }
+.glow-border { border: 1px solid rgba(239, 68, 68, 0.2); }
+.custom-scrollbar::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body class="pb-28 max-w-md mx-auto relative min-h-screen selection:bg-red-600 selection:text-white">
+​<!-- TOP HEADER -->
+<header class="flex items-center justify-between px-4 py-3 sticky top-0 bg-[#050505]/95 backdrop-blur-md z-50 border-b border-white/5">
+<div class="flex items-center space-x-2">
+<span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
+<h1 class="text-xl font-extrabold tracking-wider text-red-600 uppercase">NOXIFY</h1>
+</div>
+<div class="flex items-center space-x-3">
+<span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-gradient-to-tr from-amber-500/20 to-yellow-500/20 text-amber-400 border border-amber-500/30">VIP ELITE</span>
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-red-600 to-purple-600 flex items-center justify-center font-bold text-sm shadow-lg">S</div>
+</div>
+</header>
+​<!-- SEARCH BAR -->
+<div class="px-4 py-3">
+<div class="relative">
+<i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-zinc-500 text-sm"></i>
+<input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search channels..." class="w-full bg-[#121214] text-sm text-zinc-200 placeholder-zinc-500 pl-10 pr-4 py-3 rounded-xl border border-white/5 focus:outline-none focus:border-red-600/50 transition">
+</div>
+</div>
+​<!-- CONTENT CONTAINER -->
+<main id="mainContent" class="px-4 space-y-4">
+<!-- Dynamic Render Content -->
+</main>
+​<!-- CINEMATIC STREAMING MODAL -->
+<div id="streamModal" class="fixed inset-0 z-50 bg-black/95 flex flex-col hidden">
+<div class="flex items-center justify-between p-4 border-b border-zinc-800 bg-[#0a0a0c]">
+<div class="flex items-center space-x-2 truncate">
+<span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+<h3 id="modalTitle" class="font-bold text-red-500 text-sm truncate">Live HD Stream</h3>
+</div>
+<button onclick="closeStream()" class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-white hover:bg-zinc-800"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="flex-1 relative flex items-center justify-center bg-black">
+<video id="videoPlayer" class="w-full h-full object-contain" controls autoplay playsinline></video>
+</div>
+</div>
+​<!-- BOTTOM NAVIGATION -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[#0a0a0f]/95 backdrop-blur-lg border-t border-white/10 px-1 py-2 flex justify-around items-center z-40">
+<button onclick="switchTab('home')" class="nav-btn flex flex-col items-center space-y-1 text-red-500" data-tab="home">
+<i class="fa-solid fa-house text-lg"></i>
+<span class="text-[10px] font-semibold">Home</span>
+</button>
+<button onclick="switchTab('live')" class="nav-btn flex flex-col items-center space-y-1 text-zinc-500" data-tab="live">
+<i class="fa-solid fa-bolt text-lg"></i>
+<span class="text-[10px] font-semibold">Live Hub</span>
+</button>
+<button onclick="switchTab('schedule')" class="nav-btn flex flex-col items-center space-y-1 text-zinc-500" data-tab="schedule">
+<i class="fa-solid fa-calendar-days text-lg"></i>
+<span class="text-[10px] font-semibold">Schedule</span>
+</button>
+<button onclick="switchTab('favorites')" class="nav-btn flex flex-col items-center space-y-1 text-zinc-500" data-tab="favorites">
+<i class="fa-solid fa-heart text-lg"></i>
+<span class="text-[10px] font-semibold">Favorites</span>
+</button>
+<button onclick="switchTab('replays')" class="nav-btn flex flex-col items-center space-y-1 text-zinc-500" data-tab="replays">
+<i class="fa-solid fa-film text-lg"></i>
+<span class="text-[10px] font-semibold">Replays</span>
+</button>
+<button onclick="switchTab('profile')" class="nav-btn flex flex-col items-center space-y-1 text-zinc-500" data-tab="profile">
+<i class="fa-solid fa-user text-lg"></i>
+<span class="text-[10px] font-semibold">Profile</span>
+</button>
+</nav>
+​<script>
+// Updated Live Channels with local asset filenames from repository screenshots
+let sportsData = {
+categories: [
+{ id: 'all', name: 'All', icon: 'fa-fire' },
+{ id: 'cricket', name: 'Cricket', icon: 'fa-baseball-bat-ball' },
+{ id: 'football', name: 'Football', icon: 'fa-futbol' },
+{ id: 'basketball', name: 'Basketball', icon: 'fa-basketball' }
+],
+liveChannels: [
+{ id: 'c1', name: "Sony Ten 1", category: "sports", logo: "SONY_SportsTen1_SD_Logo_CLR.png", streamUrl: "" },
+{ id: 'c2', name: "Sony Ten 2", category: "sports", logo: "SONY_SportsTen2_SD_Logo_CLR.png", streamUrl: "" },
+{ id: 'c3', name: "Sony Ten 3", category: "sports", logo: "Sony_Sports_Ten_3_Hindi.png", streamUrl: "" },
+{ id: 'c4', name: "Sony Ten 4", category: "sports", logo: "Sony_Sports_Ten_4_Tamil.png", streamUrl: "" },
+{ id: 'c5', name: "Sony Ten 5", category: "sports", logo: "SONY_SportsTen5_SD_Logo_CLR.png", streamUrl: "" },
+{ id: 'c6', name: "Star Sports 1", category: "sports", logo: "pngwing.com.png", streamUrl: "" },
+{ id: 'c7', name: "Star Sports 2", category: "sports", logo: "pngwing.com (1).png", streamUrl: "" },
+{ id: 'c8', name: "Star Sports 3", category: "sports", logo: "pngwing.com (2).png", streamUrl: "" },
+{ id: 'c9', name: "T Sports", category: "sports", logo: "T_Sports_logo.svg.png", streamUrl: "" },
+{ id: 'c10', name: "Eurosport", category: "sports", logo: "Eurosport-logo-768x480.png", streamUrl: "" }
+]
+};
+​let currentTab = 'home';
+let searchQuery = '';
+let favorites = JSON.parse(localStorage.getItem('noxify_favs')) || [];
+let hlsPlayer = null;
+​function switchTab(tab) {
+currentTab = tab;
+document.querySelectorAll('.nav-btn').forEach(btn => {
+if (btn.dataset.tab === tab) {
+btn.classList.remove('text-zinc-500');
+btn.classList.add('text-red-500');
+} else {
+btn.classList.remove('text-red-500');
+btn.classList.add('text-zinc-500');
+}
+});
+renderContent();
+}
+​function handleSearch(query) {
+searchQuery = query.toLowerCase().trim();
+renderContent();
+}
+​function renderContent() {
+const container = document.getElementById('mainContent');
+container.innerHTML = '';
+​if (currentTab === 'home' || currentTab === 'live') {
+let html = '';
+​// Filter channels based on search input
+let filteredChannels = sportsData.liveChannels.filter(ch =>
+!searchQuery || ch.name.toLowerCase().includes(searchQuery)
+);
+​// 1. Premium Live TV Channels Grid/Row
+html += <div style="width: 100%; margin: 12px 0;">;
+html += <div style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 12px; padding: 0 4px;">🔥 Live TV Channels</div>;
+​if (filteredChannels.length === 0) {
+html += <p class="text-xs text-zinc-500 text-center py-6">No channels found matching your search.</p>;
+} else {
+html += <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 0 4px 8px 4px;">;
+filteredChannels.forEach(ch => {
+let isFav = favorites.includes(ch.id);
+html += <div class="bg-[#121214] rounded-2xl p-3 glow-border flex flex-col items-center justify-between relative group cursor-pointer" onclick="handleChannelClick('${ch.streamUrl}', '${ch.name}')" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'" style="transition: transform 0.2s;"> <button onclick="event.stopPropagation(); toggleFav('${ch.id}')" class="absolute top-2 right-2 text-zinc-500 hover:text-red-500 transition z-10"> <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart text-xs"></i> </button> <div style="width: 55px; height: 55px; border-radius: 50%; background: linear-gradient(145deg, #1f1f1f, #121212); display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid rgba(239, 68, 68, 0.4); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2); padding: 4px; margin-top: 4px;"> <img src="${ch.logo}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/2/2a/Master_Card_Logo.svg'" alt="${ch.name}" /> </div> <span style="color: #e2e8f0; font-size: 11px; text-align: center; font-weight: 600; margin-top: 8px; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${ch.name}</span> <span class="text-[9px] text-zinc-500 mt-1">${ch.streamUrl ? '<span class="text-emerald-400 font-semibold">● LIVE</span>' : '<span class="text-amber-500">No Stream URL</span>'}</span> </div>;
+});
+html += </div>;
+}
+html += </div>;
+container.innerHTML = html;
+}
+else if (currentTab === 'schedule') {
+container.innerHTML = <div class="py-10 text-center space-y-3"> <i class="fa-solid fa-calendar-days text-3xl text-zinc-600"></i> <h2 class="text-sm font-bold text-zinc-300">Match Schedule</h2> <p class="text-xs text-zinc-500 max-w-xs mx-auto">Upcoming match schedules will automatically display here once linked with your channel source configurations.</p> </div>;
+}
+else if (currentTab === 'favorites') {
+container.innerHTML = <h2 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-3">Saved Favorite Channels</h2>;
+let favChannels = sportsData.liveChannels.filter(c => favorites.includes(c.id));
+if (favChannels.length === 0) {
+container.innerHTML += <p class="text-xs text-zinc-500 text-center py-10">No favorite channels saved yet.</p>;
+} else {
+let favHtml = <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">;
+favChannels.forEach(ch => {
+favHtml += <div class="bg-[#121214] rounded-2xl p-3 glow-border flex flex-col items-center justify-between relative cursor-pointer" onclick="handleChannelClick('${ch.streamUrl}', '${ch.name}')"> <button onclick="event.stopPropagation(); toggleFav('${ch.id}')" class="absolute top-2 right-2 text-red-500 transition z-10"><i class="fa-solid fa-heart text-xs"></i></button> <div style="width: 50px; height: 50px; border-radius: 50%; background: #1f1f1f; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid rgba(239, 68, 68, 0.4); padding: 4px; margin-top: 4px;"> <img src="${ch.logo}" style="width: 100%; height: 100%; object-fit: contain;" /> </div> <span style="color: #e2e8f0; font-size: 11px; text-align: center; font-weight: 600; margin-top: 6px; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${ch.name}</span> </div>;
+});
+favHtml += </div>;
+container.innerHTML += favHtml;
+}
+}
+else if (currentTab === 'replays') {
+container.innerHTML = <div class="py-10 text-center space-y-3"> <i class="fa-solid fa-film text-3xl text-zinc-600"></i> <h2 class="text-sm font-bold text-zinc-300">Match Replays</h2> <p class="text-xs text-zinc-500 max-w-xs mx-auto">Replays will appear here automatically based on available media sources.</p> </div>;
+}
+else if (currentTab === 'profile') {
+container.innerHTML = <div class="bg-[#121214] rounded-3xl p-6 glow-border text-center space-y-4"> <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-red-600 to-purple-600 mx-auto flex items-center justify-center text-xl font-bold shadow-lg">S</div> <div> <h3 class="font-bold text-base">Sajjad Hossain</h3> <p class="text-xs text-amber-400 font-semibold mt-0.5"><i class="fa-solid fa-crown mr-1"></i> VIP ELITE MEMBER</p> </div> <div class="pt-3 border-t border-white/5 flex justify-around text-xs"> <div><p class="text-zinc-500">Saved Channels</p><p class="font-bold text-white text-sm">${favorites.length}</p></div> <div><p class="text-zinc-500">Cloud Sync</p><p class="font-bold text-emerald-400 text-sm">Active</p></div> </div> </div>;
+}
+}
+​function toggleFav(id) {
+if (favorites.includes(id)) {
+favorites = favorites.filter(f => f !== id);
+} else {
+favorites.push(id);
+}
+localStorage.setItem('noxify_favs', JSON.stringify(favorites));
+renderContent();
+}
+​function handleChannelClick(url, name) {
+if (!url || url.trim() === '') {
+showToast(Stream URL for ${name} not configured yet!);
+return;
+}
+openStream(url, name);
+}
+​function openStream(url, title) {
+document.getElementById('modalTitle').innerText = title;
+document.getElementById('streamModal').classList.remove('hidden');
+const video = document.getElementById('videoPlayer');
+​if (Hls.isSupported()) {
+if (hlsPlayer) hlsPlayer.destroy();
+hlsPlayer = new Hls();
+hlsPlayer.loadSource(url);
+hlsPlayer.attachMedia(video);
+hlsPlayer.on(Hls.Events.MANIFEST_PARSED, () => { video.play().catch(e => console.log("Autoplay blocked:", e)); });
+} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+video.src = url;
+video.addEventListener('loadedmetadata', () => { video.play(); });
+}
+}
+​function closeStream() {
+const video = document.getElementById('videoPlayer');
+video.pause();
+video.src = '';
+if (hlsPlayer) { hlsPlayer.destroy(); hlsPlayer = null; }
+document.getElementById('streamModal').classList.add('hidden');
+}
+​function showToast(msg) {
+const toast = document.createElement('div');
+toast.className = 'fixed top-16 left-1/2 transform -translate-x-1/2 bg-zinc-900 border border-red-600/50 text-white text-xs px-4 py-2 rounded-xl shadow-2xl z-50 animate-bounce';
+toast.innerText = msg;
+document.body.appendChild(toast);
+setTimeout(() => toast.remove(), 2500);
+}
+​// Initialize App
+renderContent();
+</script>
+</body>
+</html>
