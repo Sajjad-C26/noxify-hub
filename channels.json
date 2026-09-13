@@ -1,0 +1,103 @@
+{
+  "channels": [
+    {
+      "id": "tsports",
+      "name": "T Sports",
+      "logo": "T_Sports_logo.svg.png",
+      "category": "cricket",
+      "isLive": true,
+      "streamUrl": "#",
+      "viewers": "",
+      "match": {
+        "team1": "Bangladesh",
+        "logo1": "🏏",
+        "score1": "180/4",
+        "team2": "Australia",
+        "logo2": "🦘",
+        "score2": "145/8",
+        "status": "LIVE"
+      }
+    },
+    {
+      "id": "gtv",
+      "name": "GTV",
+      "logo": "65a43964409ff1705261412.jpg",
+      "category": "cricket",
+      "isLive": false,
+      "streamUrl": "#"
+    },
+    {
+      "id": "sony1",
+      "name": "Sony Sports 1",
+      "logo": "SONY_SportsTen1_SD_Logo_CLR.png",
+      "category": "football",
+      "isLive": false,
+      "streamUrl": "#"
+    },
+    {
+      "id": "sony2",
+      "name": "Sony Sports 2",
+      "logo": "SONY_SportsTen2_SD_Logo_CLR.png",
+      "category": "football",
+      "isLive": false,
+      "streamUrl": "#"
+    },
+    {
+      "id": "sony3",
+      "name": "Sony Sports 3 Hindi",
+      "logo": "Sony_Sports_Ten_3_Hindi.png",
+      "category": "cricket",
+      "isLive": false,
+      "streamUrl": "#"
+    },
+    {
+      "id": "sony4",
+      "name": "Sony Sports 4 Tamil",
+      "logo": "Sony_Sports_Ten_4_Tamil.png",
+      "category": "cricket",
+      "isLive": false,
+      "streamUrl": "#"
+    },
+    {
+      "id": "sony5",
+      "name": "Sony Sports 5",
+      "logo": "SONY_SportsTen5_SD_Logo_CLR.png",
+      "category": "basketball",
+      "isLive": false,
+      "streamUrl": "#"
+    },
+    {
+      "id": "eurosport",
+      "name": "Eurosport",
+      "logo": "Eurosport-logo-768x480.png",
+      "category": "f1",
+      "isLive": false,
+      "streamUrl": "#"
+    },
+    {
+      "id": "starsports1",
+      "name": "Star Sports 1",
+      "logo": "pngwing.com.png",
+      "category": "football",
+      "isLive": false,
+      "streamUrl": "#"
+    },
+    {
+      "id": "starsports2",
+      "name": "Star Sports 2",
+      "logo": "pngwing.com (1).png",
+      "category": "football",
+      "isLive": false,
+      "streamUrl": "#"
+    },
+    {
+      "id": "starsports3",
+      "name": "Star Sports 3",
+      "logo": "pngwing.com (2).png",
+      "category": "cricket",
+      "isLive": false,
+      "streamUrl": "#"
+    }
+  ],
+  "replays": []
+}
