@@ -4,69 +4,69 @@
 "name": "Sony Ten 1",
 "logo": "SONY_SportsTen1_SD_Logo_CLR.png",
 "category": "sports",
-"stream_url": ""
+"streamUrl": "#"
 },
 {
 "id": "sony-ten-2",
 "name": "Sony Ten 2",
 "logo": "SONY_SportsTen2_SD_Logo_CLR.png",
 "category": "sports",
-"stream_url": ""
+"streamUrl": "#"
 },
 {
 "id": "sony-ten-3",
 "name": "Sony Ten 3",
 "logo": "Sony_Sports_Ten_3_Hindi.png",
 "category": "sports",
-"stream_url": ""
+"streamUrl": "#"
 },
 {
 "id": "sony-ten-4",
 "name": "Sony Ten 4",
 "logo": "Sony_Sports_Ten_4_Tamil.png",
 "category": "sports",
-"stream_url": ""
+"streamUrl": "#"
 },
 {
 "id": "sony-ten-5",
 "name": "Sony Ten 5",
 "logo": "SONY_SportsTen5_SD_Logo_CLR.png",
 "category": "sports",
-"stream_url": ""
+"streamUrl": "#"
 },
 {
 "id": "star-sports-1",
 "name": "Star Sports 1",
 "logo": "pngwing.com.png",
 "category": "sports",
-"stream_url": ""
+"streamUrl": "#"
 },
 {
 "id": "star-sports-2",
 "name": "Star Sports 2",
 "logo": "pngwing.com (1).png",
 "category": "sports",
-"stream_url": ""
+"streamUrl": "#"
 },
 {
 "id": "star-sports-3",
 "name": "Star Sports 3",
 "logo": "pngwing.com (2).png",
 "category": "sports",
-"stream_url": ""
+"streamUrl": "#"
 },
 {
 "id": "t-sports",
 "name": "T Sports",
 "logo": "T_Sports_logo.svg.png",
 "category": "sports",
-"stream_url": ""
+"streamUrl": "#"
 },
 {
 "id": "eurosport",
 "name": "Eurosport",
 "logo": "Eurosport-logo-768x480.png",
 "category": "sports",
-"stream_url": ""
+"streamUrl": "#"
 }
 ]
