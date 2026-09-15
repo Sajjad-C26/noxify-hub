@@ -178,21 +178,32 @@ function toggleFav(channelId) {
 
 // ===== STREAM PLAYER =====
 function openStream(channelId) {
-  const ch = channelsData.channels.find(c => c.id === channelId);
-  if (!ch) return;
-  if (!ch.isLive) {
-    alert('This channel is not live yet. Check Schedule for the start time.');
-    return;
-  }
-  document.getElementById('modalTitle').innerText = ch.match ? `${matchLabel(ch.match)} — ${ch.name}` : ch.name;
-  document.getElementById('streamFrame').src = ch.streamUrl;
-  document.getElementById('streamModal').classList.remove('hidden');
+    const ch = channelsData.channels.find(c => c.id === channelId);
+    if (!ch) return;
+    if (!ch.isLive) {
+        alert('This channel is not live yet.');
+        return;
+    }
+    
+    document.getElementById('modalTitle').innerText = ch.name;
+    
+    const iframe = document.getElementById('streamFrame');
+    if (iframe) {
+        iframe.src = ch.url; 
+    }
+    
+    document.getElementById('streamModal').style.display = 'block'; 
 }
 
 function closeStream() {
-  document.getElementById('streamModal').classList.add('hidden');
-  document.getElementById('streamFrame').src = '';
+    const iframe = document.getElementById('streamFrame');
+    if (iframe) {
+        iframe.src = ''; 
+    }
+    document.getElementById('streamModal').style.display = 'none';
 }
+
+
 
 // ===== RENDER ROUTER =====
 function renderContent() {
