@@ -189,7 +189,8 @@ function openStream(channelId) {
     
     const iframe = document.getElementById('streamFrame');
     if (iframe) {
-        iframe.src = ch.url; 
+        iframe.src = ch.streamUrl; // ch.url er bodole ch.streamUrl hobe
+
     }
     
     document.getElementById('streamModal').style.display = 'block'; 
