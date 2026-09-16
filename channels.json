@@ -6,7 +6,7 @@
       "logo": "T_Sports_logo.svg.png",
       "category": "cricket",
       "isLive": true,
-      "streamUrl": "https://tvs2.aynaott.com/tsportshd/index.m3u8"
+      "streamUrl": "APNAR_AAGER_WORKING_TSPORTS_LINK"
     },
     {
       "id": "gtv",
@@ -14,7 +14,7 @@
       "logo": "65a43964409ff1705261412.jpg",
       "category": "cricket",
       "isLive": true,
-      "streamUrl": "https://app.ncare.live/live-orgin/gtv.stream/playlist.m3u8"
+      "streamUrl": "APNAR_AAGER_WORKING_GTV_LINK"
     },
     {
       "id": "sony1",
