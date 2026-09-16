@@ -1,85 +1,45 @@
 {
-  "channels": [
-    {
-      "id": "tsports",
-      "name": "T Sports",
-      "logo": "T_Sports_logo.svg.png",
-      "category": "cricket",
-      "isLive": true,
-      "streamUrl": "https://tvsen5.aynaott.com/TnMn5kZz8aLm/index.m3u8"
-      
-    },
-    {
-      "id": "gtv",
-      "name": "GTV",
-      "logo": "65a43964409ff1705261412.jpg",
-      "category": "cricket",
-      "isLive": true,
-      "streamUrl": "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/gazibdz.stream/live-orgin/gazibdz.stream/playlist.m3u8"
-    },
-    {
-      "id": "sony1",
-      "name": "Sony Sports 1",
-      "logo": "SONY_SportsTen1_SD_Logo_CLR.png",
-      "category": "football",
-      "isLive": true,
-      "streamUrl": "https://tvsen5.aynascope.com/sonysports1/index.m3u8"
-    },
-    {
-      "id": "sony2",
-      "name": "Sony Sports 2",
-      "logo": "SONY_SportsTen2_SD_Logo_CLR.png",
-      "category": "football",
-      "isLive": true,
-      "streamUrl": "https://tvsen5.aynascope.com/sonysports2/index.m3u8"
-    },
-    {
-      "id": "sony3",
-      "name": "Sony Sports 3",
-      "logo": "SONY_SportsTen3_Hindi.png",
-      "category": "football",
-      "isLive": true,
-      "streamUrl": "https://tvsen5.aynascope.com/sonysports3/index.m3u8"
-    },
-    {
-      "id": "sony4",
-      "name": "Sony Sports 4",
-      "logo": "SONY_SportsTen4_Tamil.png",
-      "category": "football",
-      "isLive": true,
-      "streamUrl": "https://tvsen5.aynascope.com/sonysports4/index.m3u8"
-    },
-    {
-      "id": "sony5",
-      "name": "Sony Sports 5",
-      "logo": "SONY_SportsTen5_SD_Logo_CLR.png",
-      "category": "football",
-      "isLive": true,
-      "streamUrl": "https://tvsen5.aynascope.com/sonysports5/index.m3u8"
-    },
-    {
-      "id": "star1",
-      "name": "Star Sports 1",
-      "logo": "pngwing.com.png",
-      "category": "cricket",
-      "isLive": true,
-      "streamUrl": "https://tvsen5.aynascope.com/starsports1/index.m3u8"
-    },
-    {
-      "id": "star2",
-      "name": "Star Sports 2",
-      "logo": "pngwing.com (1).png",
-      "category": "cricket",
-      "isLive": true,
-      "streamUrl": "https://tvsen5.aynascope.com/starsports2/index.m3u8"
-    },
-    {
-      "id": "europort",
-      "name": "Eurosport",
-      "logo": "Eurosport-logo-768x480.png",
-      "category": "football",
-      "isLive": true,
-      "streamUrl": "https://tvsen5.aynascope.com/eurosport/index.m3u8"
-    }
-  ]
+    "channels": [
+        {
+            "id": "tsports",
+            "name": "T Sports",
+            "logo": "https://i.ibb.co.com/8410X1v/T-Sports-logo.png",
+            "category": "cricket",
+            "isLive": true,
+            "streamUrl": "https://tvsen5.aynaott.com/TnWn5KzZ8alm/index.m3u8"
+        },
+        {
+            "id": "gtv",
+            "name": "GTV",
+            "logo": "https://i.ibb.co.com/6Jz117X/GTV.jpg",
+            "category": "cricket",
+            "isLive": true,
+            "streamUrl": "https://app.ncare.live/c3VydmVuYyX8RpbEUW9iX8y8vMDE0GIDU6RgzQ6NTAgEdOaeFzF9YWxIZT0UGeZN1lMyfvcGMZEJCTFWeVNPTDmFSawRtaW55Sa1Aphn?AgyEooaFizF92Y9xIZT0U0uN13Myfvc6WZEJCTFWeVNPT0wEsuRtAk5Ua1PhPT12/gazibdz.stream/live-origin/gazibdz.stream/playlist.m3u8"
+        },
+        {
+            "id": "sonysports1",
+            "name": "Sony Sports Ten 1",
+            "logo": "https://i.ibb.co.com/9n9812T/sony1.png",
+            "category": "sports",
+            "isLive": true,
+            "streamUrl": "https://tvsen5.aynscope.com/sonysports1/index.m3u8"
+        },
+        {
+            "id": "sonysports2",
+            "name": "Sony Sports Ten 2",
+            "logo": "https://i.ibb.co.com/0jzR14B/sony2.png",
+            "category": "sports",
+            "isLive": true,
+            "streamUrl": "https://tvsen5.aynscope.com/sonysports2/index.m3u8"
+        },
+        {
+            "id": "sonysports3",
+            "name": "Sony Sports Ten 3",
+            "logo": "https://i.ibb.co.com/9n9812T/sony1.png",
+            "category": "sports",
+            "isLive": true,
+            "streamUrl": "https://tvsen5.aynscope.com/sonysports3/index.m3u8"
+        }
+    ],
+    "replays": []
 }
