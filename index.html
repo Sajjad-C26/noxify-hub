@@ -116,7 +116,8 @@ function iconFor(cat) { return categoryIcons[cat] || 'fa-trophy'; }
 // ===== DATA LOADING (single source of truth: channels.json) =====
 async function loadChannels() {
   try {
-    const res = await fetch('channels.json', { cache: 'no-store' });
+    const res = await fetch('https://my-tv-api.vercel.app/api/channels', { cache: 'no-store' });
+
     channelsData = await res.json();
   } catch (e) {
     console.error('Failed to load channels.json', e);
