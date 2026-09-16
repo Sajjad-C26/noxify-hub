@@ -3,7 +3,7 @@
         {
             "id": "tsports",
             "name": "T Sports",
-            "logo": "https://upload.wikimedia.org/wikipedia/en/3/36/T-Sports_logo.png",
+            "logo": "https://i.ibb.co.com/8410X1v/T-Sports-logo.png",
             "category": "cricket",
             "isLive": true,
             "streamUrl": "https://tvsen5.aynaott.com/TnWn5KzZ8alm/index.m3u8"
@@ -11,7 +11,7 @@
         {
             "id": "gtv",
             "name": "GTV",
-            "logo": "https://upload.wikimedia.org/wikipedia/en/5/58/Gazi_TV_Logo.jpg",
+            "logo": "https://i.ibb.co.com/6Jz117X/GTV.jpg",
             "category": "cricket",
             "isLive": true,
             "streamUrl": "https://app.ncare.live/c3VydmVuYyX8RpbEUW9iX8y8vMDE0GIDU6RgzQ6NTAgEdOaeFzF9YWxIZT0UGeZN1lMyfvcGMZEJCTFWeVNPTDmFSawRtaW55Sa1Aphn?AgyEooaFizF92Y9xIZT0U0uN13Myfvc6WZEJCTFWeVNPT0wEsuRtAk5Ua1PhPT12/gazibdz.stream/live-origin/gazibdz.stream/playlist.m3u8"
@@ -19,7 +19,7 @@
         {
             "id": "sonysports1",
             "name": "Sony Sports Ten 1",
-            "logo": "https://upload.wikimedia.org/wikipedia/en/7/7b/Sony_Sports_Ten_1.png",
+            "logo": "https://i.ibb.co.com/9n9812T/sony1.png",
             "category": "sports",
             "isLive": true,
             "streamUrl": "https://tvsen5.aynscope.com/sonysports1/index.m3u8"
@@ -27,7 +27,7 @@
         {
             "id": "sonysports2",
             "name": "Sony Sports Ten 2",
-            "logo": "https://upload.wikimedia.org/wikipedia/en/7/77/Sony_Sports_Ten_2.png",
+            "logo": "https://i.ibb.co.com/0jzR14B/sony2.png",
             "category": "sports",
             "isLive": true,
             "streamUrl": "https://tvsen5.aynscope.com/sonysports2/index.m3u8"
@@ -35,26 +35,10 @@
         {
             "id": "sonysports3",
             "name": "Sony Sports Ten 3",
-            "logo": "https://upload.wikimedia.org/wikipedia/en/d/d3/Sony_Sports_Ten_3.png",
+            "logo": "https://i.ibb.co.com/9n9812T/sony1.png",
             "category": "sports",
             "isLive": true,
             "streamUrl": "https://tvsen5.aynscope.com/sonysports3/index.m3u8"
-        },
-        {
-            "id": "sonysports4",
-            "name": "Sony Sports Ten 4",
-            "logo": "https://upload.wikimedia.org/wikipedia/en/8/81/Sony_Sports_Ten_4.png",
-            "category": "sports",
-            "isLive": true,
-            "streamUrl": "https://tvsen5.aynscope.com/sonysports4/index.m3u8"
-        },
-        {
-            "id": "sonysports5",
-            "name": "Sony Sports Ten 5",
-            "logo": "https://upload.wikimedia.org/wikipedia/en/e/e7/Sony_Sports_Ten_5.png",
-            "category": "sports",
-            "isLive": true,
-            "streamUrl": "https://tvsen5.aynscope.com/sonysports5/index.m3u8"
         }
     ],
     "replays": []
