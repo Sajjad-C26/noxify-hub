@@ -116,7 +116,7 @@ function iconFor(cat) { return categoryIcons[cat] || 'fa-trophy'; }
 // ===== DATA LOADING (single source of truth: channels.json) =====
 async function loadChannels() {
   try {
-    const res = await fetch('https://my-tv-api.vercel.app/api/channels', { cache: 'no-store' });
+    const res = await fetch('https://raw.githubusercontent.com/Sajjad-C26/noxify-hub/refs/heads/main/channels.json');
 
     channelsData = await res.json();
   } catch (e) {
