@@ -1,45 +1,48 @@
 {
-    "channels": [
+  "channels": [
+    {
+      "id": "tsports",
+      "name": "T Sports",
+      "logo": "https://i.ibb.co/...",
+      "category": "cricket",
+      "isLive": true,
+      "streamUrl": "https://tvsen5.aynaott.com/..."
+    },
+    {
+      "id": "gtv",
+      "name": "GTV",
+      "logo": "https://i.ibb.co/...",
+      "category": "cricket",
+      "isLive": true,
+      "streamUrl": "https://..."
+    }
+  ],
+  "matches": [
+    {
+      "id": "match_01",
+      "category": "Cricket",
+      "tournament": "Asian Games Women",
+      "team1": {
+        "name": "PAK-W",
+        "logo": "https://flagcdn.com/w80/pk.png"
+      },
+      "team2": {
+        "name": "BAN-W",
+        "logo": "https://flagcdn.com/w80/bd.png"
+      },
+      "time": "2026-09-22T06:00:00",
+      "status": "upcoming",
+      "servers": [
         {
-            "id": "tsports",
-            "name": "T Sports",
-            "logo": "https://i.ibb.co.com/8410X1v/T-Sports-logo.png",
-            "category": "cricket",
-            "isLive": true,
-            "streamUrl": "https://tvsen5.aynaott.com/TnWn5KzZ8alm/index.m3u8"
+          "name": "Server 1 (FHD)",
+          "url": "https://example.com/stream1.m3u8"
         },
         {
-            "id": "gtv",
-            "name": "GTV",
-            "logo": "https://i.ibb.co.com/6Jz117X/GTV.jpg",
-            "category": "cricket",
-            "isLive": true,
-            "streamUrl": "https://app.ncare.live/c3VydmVuYyX8RpbEUW9iX8y8vMDE0GIDU6RgzQ6NTAgEdOaeFzF9YWxIZT0UGeZN1lMyfvcGMZEJCTFWeVNPTDmFSawRtaW55Sa1Aphn?AgyEooaFizF92Y9xIZT0U0uN13Myfvc6WZEJCTFWeVNPT0wEsuRtAk5Ua1PhPT12/gazibdz.stream/live-origin/gazibdz.stream/playlist.m3u8"
-        },
-        {
-            "id": "sonysports1",
-            "name": "Sony Sports Ten 1",
-            "logo": "https://i.ibb.co.com/9n9812T/sony1.png",
-            "category": "sports",
-            "isLive": true,
-            "streamUrl": "https://tvsen5.aynscope.com/sonysports1/index.m3u8"
-        },
-        {
-            "id": "sonysports2",
-            "name": "Sony Sports Ten 2",
-            "logo": "https://i.ibb.co.com/0jzR14B/sony2.png",
-            "category": "sports",
-            "isLive": true,
-            "streamUrl": "https://tvsen5.aynscope.com/sonysports2/index.m3u8"
-        },
-        {
-            "id": "sonysports3",
-            "name": "Sony Sports Ten 3",
-            "logo": "https://i.ibb.co.com/9n9812T/sony1.png",
-            "category": "sports",
-            "isLive": true,
-            "streamUrl": "https://tvsen5.aynscope.com/sonysports3/index.m3u8"
+          "name": "Server 2 (HD)",
+          "url": "https://example.com/stream2.m3u8"
         }
-    ],
-    "replays": []
+      ]
+    }
+  ],
+  "replays": []
 }
