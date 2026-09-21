@@ -117,18 +117,14 @@ function iconFor(cat) { return categoryIcons[cat] || 'fa-trophy'; }
 // ===== DATA LOADING (single source of truth: channels.json) =====
 async function loadChannels() {
     try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000);
-        
-        const res = await fetch('https://raw.githubusercontent.com/Sajjad-C26/noxify-hub/refs/heads/main/channels.json', { signal: controller.signal });
-        clearTimeout(timeoutId);
-        
+        const res = await fetch('channels.json');
         channelsData = await res.json();
     } catch (e) {
         channelsData = { channels: [], matches: [], replays: [] };
     }
     renderContent();
 }
+
 
 
 function getCategories() {
