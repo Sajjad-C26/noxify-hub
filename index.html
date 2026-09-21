@@ -121,7 +121,8 @@ async function loadChannels() {
 
     channelsData = await res.json();
   } catch (e) {
-    console.error('Failed to load channels.json', e);
+    channelsData = { channels: [], matches: [], replays: [] };
+
     channelsData = { channels: [], replays: [] };
   }
   renderContent();
