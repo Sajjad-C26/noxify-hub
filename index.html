@@ -395,16 +395,15 @@ function renderProfile(container) {
     </div>`;
 }
 
-// ===== INITIAL LOAD =====
 loadChannels();
 </script>
-</div>
 <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
-  });
-}
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js');
+        });
+    }
 </script>
 </body>
 </html>
+
