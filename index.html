@@ -178,24 +178,15 @@ function toggleFav(channelId) {
   renderContent();
 }
 
-// ===== STREAM PLAYER =====
-function openStream(channelId) {
-    const ch = channelsData.channels.find(c => c.id === channelId);
-    if (!ch) return;
-    if (!ch.isLive) {
-        alert('This channel is not live yet.');
-        return;
-    }
-    
-    document.getElementById('modalTitle').innerText = ch.name;
-    
-    const iframe = document.getElementById('streamFrame');
-    if (iframe) {
-        iframe.src = ch.streamUrl; // ch.url er bodole ch.streamUrl hobe
+function openStream(matchId) {
+    const match = channelsData.matches.find(m => m.id === matchId);
+    if (!match) return;
 
-    }
-    
-    document.getElementById('streamModal').style.display = 'block'; 
+    const modalTitle = document.getElementById('modalTitle');
+    if (modalTitle) modalTitle.innerText = `${match.team1.name} vs ${match.team2.name}`;
+
+    const streamModal = document.getElementById('streamModal');
+    if (streamModal) streamModal.style.display = 'block';
 }
 
 function closeStream() {
