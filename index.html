@@ -117,7 +117,7 @@ function iconFor(cat) { return categoryIcons[cat] || 'fa-trophy'; }
 // ===== DATA LOADING (single source of truth: channels.json) =====
 async function loadChannels() {
     try {
-        const res = await fetch('channels.json');
+        const res = await fetch('https://raw.githubusercontent.com/Sajjad-C26/noxify-hub/main/channels.json', { cache: 'no-store' });
         channelsData = await res.json();
     } catch (e) {
         channelsData = { channels: [], matches: [], replays: [] };
