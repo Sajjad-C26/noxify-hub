@@ -120,10 +120,11 @@ async function loadChannels() {
     const res = await fetch('https://raw.githubusercontent.com/Sajjad-C26/noxify-hub/main/channels.json');
 
     channelsData = await res.json();
-  } catch (e) {
-    channelsData = { channels: [], matches: [], replays: [] };
+      } catch (e) {
+        alert("Error: " + e.message);
+        channelsData = { channels: [], matches: [], replays: [] };
+    }
 
-  }
   renderContent();
 }
 
