@@ -120,7 +120,7 @@ async function loadChannels() {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 5000);
         
-        const res = await fetch('https://raw.githubusercontent.com/Sajjad-C26/noxify-hub/main/channels.json', { signal: controller.signal });
+        const res = await fetch('https://raw.githubusercontent.com/Sajjad-C26/noxify-hub/refs/heads/main/channels.json', { signal: controller.signal });
         clearTimeout(timeoutId);
         
         channelsData = await res.json();
